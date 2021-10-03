@@ -1,0 +1,25 @@
+<div>
+  <app-button
+    *ngIf="to.btnType === buttonTypes.DEFAULT; else iconButton"
+    class="button"
+    [classes]="classes"
+    [disabled]="to.disableIfInvalid && !isValid"
+    (click)="onClick()"
+  >
+    {{ to.text }}
+  </app-button>
+
+  <ng-template #iconButton>
+    <button
+      mat-icon-button
+      [ngClass]="classes"
+      [title]="to.text"
+      [disabled]="to.disableIfInvalid && !isValid"
+      (click)="onClick()"
+    >
+      <mat-icon class="vertical-align-bottom" [svgIcon]="iconName">
+        {{ to.text }}
+      </mat-icon>
+    </button>
+  </ng-template>
+</div>

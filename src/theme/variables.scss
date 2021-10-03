@@ -1,0 +1,489 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #e24733;
+  // --ion-color-primary: #ff3842;
+  --ion-color-primary-rgb: 255, 56, 66;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #d8141e;
+  --ion-color-primary-tint: #cf2831;
+
+  /** secondary **/
+  --ion-color-secondary: #3dc2ff;
+  --ion-color-secondary-rgb: 61, 194, 255;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #36abe0;
+  --ion-color-secondary-tint: #50c8ff;
+
+  /** tertiary **/
+  --ion-color-tertiary: #5260ff;
+  --ion-color-tertiary-rgb: 82, 96, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #4854e0;
+  --ion-color-tertiary-tint: #6370ff;
+
+  /** success **/
+  --ion-color-success: #25a859;
+  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #28ba62;
+  --ion-color-success-tint: #42d77d;
+
+  /** warning **/
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  /** danger **/
+  --ion-color-danger: #eb445a;
+  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 36, 40;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #92949c;
+  --ion-color-medium-rgb: 146, 148, 156;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #808289;
+  --ion-color-medium-tint: #9d9fa6;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 245, 248;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  /*
+   * Dark Colors
+   * -------------------------------------------
+   */
+
+  body {
+    --ion-color-primary: #428cff;
+    --ion-color-primary-rgb: 66, 140, 255;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #3a7be0;
+    --ion-color-primary-tint: #5598ff;
+
+    --ion-color-secondary: #50c8ff;
+    --ion-color-secondary-rgb: 80, 200, 255;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #46b0e0;
+    --ion-color-secondary-tint: #62ceff;
+
+    --ion-color-tertiary: #6a64ff;
+    --ion-color-tertiary-rgb: 106, 100, 255;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+    --ion-color-tertiary-shade: #5d58e0;
+    --ion-color-tertiary-tint: #7974ff;
+
+    --ion-color-success: #2fdf75;
+    --ion-color-success-rgb: 47, 223, 117;
+    --ion-color-success-contrast: #000000;
+    --ion-color-success-contrast-rgb: 0, 0, 0;
+    --ion-color-success-shade: #29c467;
+    --ion-color-success-tint: #44e283;
+
+    --ion-color-warning: #ffd534;
+    --ion-color-warning-rgb: 255, 213, 52;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0, 0, 0;
+    --ion-color-warning-shade: #e0bb2e;
+    --ion-color-warning-tint: #ffd948;
+
+    --ion-color-danger: #ff4961;
+    --ion-color-danger-rgb: 255, 73, 97;
+    --ion-color-danger-contrast: #ffffff;
+    --ion-color-danger-contrast-rgb: 255, 255, 255;
+    --ion-color-danger-shade: #e04055;
+    --ion-color-danger-tint: #ff5b71;
+
+    --ion-color-dark: #f4f5f8;
+    --ion-color-dark-rgb: 244, 245, 248;
+    --ion-color-dark-contrast: #000000;
+    --ion-color-dark-contrast-rgb: 0, 0, 0;
+    --ion-color-dark-shade: #d7d8da;
+    --ion-color-dark-tint: #f5f6f9;
+
+    --ion-color-medium: #989aa2;
+    --ion-color-medium-rgb: 152, 154, 162;
+    --ion-color-medium-contrast: #000000;
+    --ion-color-medium-contrast-rgb: 0, 0, 0;
+    --ion-color-medium-shade: #86888f;
+    --ion-color-medium-tint: #a2a4ab;
+
+    --ion-color-light: #222428;
+    --ion-color-light-rgb: 34, 36, 40;
+    --ion-color-light-contrast: #ffffff;
+    --ion-color-light-contrast-rgb: 255, 255, 255;
+    --ion-color-light-shade: #1e2023;
+    --ion-color-light-tint: #383a3e;
+  }
+
+  /*
+   * iOS Dark Theme
+   * -------------------------------------------
+   */
+
+  .ios body {
+    --ion-background-color: #000000;
+    --ion-background-color-rgb: 0, 0, 0;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+
+    --ion-color-step-50: #0d0d0d;
+    --ion-color-step-100: #1a1a1a;
+    --ion-color-step-150: #262626;
+    --ion-color-step-200: #333333;
+    --ion-color-step-250: #404040;
+    --ion-color-step-300: #4d4d4d;
+    --ion-color-step-350: #595959;
+    --ion-color-step-400: #666666;
+    --ion-color-step-450: #737373;
+    --ion-color-step-500: #808080;
+    --ion-color-step-550: #8c8c8c;
+    --ion-color-step-600: #999999;
+    --ion-color-step-650: #a6a6a6;
+    --ion-color-step-700: #b3b3b3;
+    --ion-color-step-750: #bfbfbf;
+    --ion-color-step-800: #cccccc;
+    --ion-color-step-850: #d9d9d9;
+    --ion-color-step-900: #e6e6e6;
+    --ion-color-step-950: #f2f2f2;
+
+    --ion-toolbar-background: #0d0d0d;
+
+    --ion-item-background: #000000;
+
+    --ion-card-background: #1c1c1d;
+  }
+
+  /*
+   * Material Design Dark Theme
+   * -------------------------------------------
+   */
+
+  .md body {
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18, 18, 18;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+
+    --ion-border-color: #222222;
+
+    --ion-color-step-50: #1e1e1e;
+    --ion-color-step-100: #2a2a2a;
+    --ion-color-step-150: #363636;
+    --ion-color-step-200: #414141;
+    --ion-color-step-250: #4d4d4d;
+    --ion-color-step-300: #595959;
+    --ion-color-step-350: #656565;
+    --ion-color-step-400: #717171;
+    --ion-color-step-450: #7d7d7d;
+    --ion-color-step-500: #898989;
+    --ion-color-step-550: #949494;
+    --ion-color-step-600: #a0a0a0;
+    --ion-color-step-650: #acacac;
+    --ion-color-step-700: #b8b8b8;
+    --ion-color-step-750: #c4c4c4;
+    --ion-color-step-800: #d0d0d0;
+    --ion-color-step-850: #dbdbdb;
+    --ion-color-step-900: #e7e7e7;
+    --ion-color-step-950: #f3f3f3;
+
+    --ion-item-background: #1e1e1e;
+
+    --ion-toolbar-background: #1f1f1f;
+
+    --ion-tab-bar-background: #1f1f1f;
+
+    --ion-card-background: #1e1e1e;
+  }
+}
+
+// ! ////////////////////////////////////////////////////////////////////////////////////
+// color blanco iconos
+.blanco {
+  color: #f4f5f8;
+}
+
+.icon_vertical {
+  vertical-align: middle;
+}
+
+// tabs home
+.tab-selected {
+  ion-icon {
+    width: 2rem !important;
+    height: 2rem !important;
+    transition: width 0.3s, height 0.3s;
+  }
+}
+
+// DIVIDER
+.divider {
+  margin: 0.5rem;
+  min-height: 0 !important;
+}
+
+.spinner_small {
+  width: 22px !important;
+  height: 22px !important;
+  vertical-align: middle !important;
+}
+
+// popuver
+.pop_product {
+  --width: 150px !important;
+}
+
+// Block global
+.block {
+  display: block !important;
+}
+
+.font_seis {
+  font-weight: 600;
+}
+
+/********************************************************************************************
+ DEFINICION DE COLORES > Crear carpeta partial y meterlo dentro con el nombre '_colors.scss'
+ *******************************************************************************************/
+$azul: #003b71;
+$azul-50: scale-color($azul, $saturation: 0%, $lightness: 90%) !default;
+$azul-100: scale-color($azul, $saturation: 0%, $lightness: 80%) !default;
+$azul-200: scale-color($azul, $saturation: 0%, $lightness: 70%) !default;
+$azul-300: scale-color($azul, $saturation: 0%, $lightness: 60%) !default;
+$azul-400: scale-color($azul, $saturation: 0%, $lightness: 50%) !default;
+$azul-500: scale-color($azul, $saturation: 0%, $lightness: 40%) !default;
+$azul-600: scale-color($azul, $saturation: 0%, $lightness: 30%) !default;
+$azul-700: scale-color($azul, $saturation: 0%, $lightness: 20%) !default;
+$azul-800: scale-color($azul, $saturation: 0%, $lightness: 10%) !default;
+$azul-900: scale-color($azul, $saturation: 0%, $lightness: 0%) !default;
+$azul-a100: scale-color($azul, $saturation: 25%, $lightness: 75%) !default;
+$azul-a200: scale-color($azul, $saturation: 25%, $lightness: 65%) !default;
+$azul-a400: scale-color($azul, $saturation: 25%, $lightness: 55%) !default;
+$azul-a700: scale-color($azul, $saturation: 25%, $lightness: 45%) !default;
+
+$celeste: #8cb9cb;
+$celeste-50: scale-color($celeste, $saturation: 0%, $lightness: 30%) !default;
+$celeste-100: scale-color($celeste, $saturation: 0%, $lightness: 20%) !default;
+$celeste-200: scale-color($celeste, $saturation: 0%, $lightness: 10%) !default;
+$celeste-300: scale-color($celeste, $saturation: 0%, $lightness: 0%) !default;
+$celeste-400: scale-color($celeste, $saturation: 0%, $lightness: -10%) !default;
+$celeste-500: scale-color($celeste, $saturation: 0%, $lightness: -20%) !default;
+$celeste-600: scale-color($celeste, $saturation: 0%, $lightness: -30%) !default;
+$celeste-700: scale-color($celeste, $saturation: 0%, $lightness: -40%) !default;
+$celeste-800: scale-color($celeste, $saturation: 0%, $lightness: -50%) !default;
+$celeste-900: scale-color($celeste, $saturation: 0%, $lightness: -60%) !default;
+$celeste-a100: scale-color(
+  $celeste,
+  $saturation: 25%,
+  $lightness: 25%
+) !default;
+$celeste-a200: scale-color($celeste, $saturation: 25%, $lightness: 5%) !default;
+$celeste-a400: scale-color(
+  $celeste,
+  $saturation: 25%,
+  $lightness: -25%
+) !default;
+$celeste-a700: scale-color(
+  $celeste,
+  $saturation: 25%,
+  $lightness: -45%
+) !default;
+
+$rojo: #f10826;
+$rojo-50: scale-color($rojo, $saturation: 0%, $lightness: 60%) !default;
+$rojo-100: scale-color($rojo, $saturation: 0%, $lightness: 50%) !default;
+$rojo-200: scale-color($rojo, $saturation: 0%, $lightness: 40%) !default;
+$rojo-300: scale-color($rojo, $saturation: 0%, $lightness: 30%) !default;
+$rojo-400: scale-color($rojo, $saturation: 0%, $lightness: 20%) !default;
+$rojo-500: scale-color($rojo, $saturation: 0%, $lightness: 10%) !default;
+$rojo-600: scale-color($rojo, $saturation: 0%, $lightness: 0%) !default;
+$rojo-700: scale-color($rojo, $saturation: 0%, $lightness: -10%) !default;
+$rojo-800: scale-color($rojo, $saturation: 0%, $lightness: -20%) !default;
+$rojo-900: scale-color($rojo, $saturation: 0%, $lightness: -30%) !default;
+$rojo-a100: scale-color($rojo, $saturation: 25%, $lightness: 75%) !default;
+$rojo-a200: scale-color($rojo, $saturation: 25%, $lightness: 65%) !default;
+$rojo-a400: scale-color($rojo, $saturation: 25%, $lightness: 55%) !default;
+$rojo-a700: scale-color($rojo, $saturation: 25%, $lightness: 45%) !default;
+
+$verde: #28a745 !default;
+$verde-50: scale-color($verde, $saturation: 0%, $lightness: 60%) !default;
+$verde-100: scale-color($verde, $saturation: 0%, $lightness: 50%) !default;
+$verde-200: scale-color($verde, $saturation: 0%, $lightness: 40%) !default;
+$verde-300: scale-color($verde, $saturation: 0%, $lightness: 30%) !default;
+$verde-400: scale-color($verde, $saturation: 0%, $lightness: 20%) !default;
+$verde-500: scale-color($verde, $saturation: 0%, $lightness: 10%) !default;
+$verde-600: scale-color($verde, $saturation: 0%, $lightness: 0%) !default;
+$verde-700: scale-color($verde, $saturation: 0%, $lightness: -10%) !default;
+$verde-800: scale-color($verde, $saturation: 0%, $lightness: -20%) !default;
+$verde-900: scale-color($verde, $saturation: 0%, $lightness: -30%) !default;
+$verde-a100: scale-color($verde, $saturation: 25%, $lightness: 75%) !default;
+$verde-a200: scale-color($verde, $saturation: 25%, $lightness: 65%) !default;
+$verde-a400: scale-color($verde, $saturation: 25%, $lightness: 55%) !default;
+$verde-a700: scale-color($verde, $saturation: 25%, $lightness: 45%) !default;
+
+$amarillo: #ffc107;
+$amarillo-50: scale-color($amarillo, $saturation: 0%, $lightness: 50%) !default;
+$amarillo-100: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: 40%
+) !default;
+$amarillo-200: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: 30%
+) !default;
+$amarillo-300: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: 20%
+) !default;
+$amarillo-400: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: 10%
+) !default;
+$amarillo-500: scale-color($amarillo, $saturation: 0%, $lightness: 0%) !default;
+$amarillo-600: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: -10%
+) !default;
+$amarillo-700: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: -20%
+) !default;
+$amarillo-800: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: -30%
+) !default;
+$amarillo-900: scale-color(
+  $amarillo,
+  $saturation: 0%,
+  $lightness: -40%
+) !default;
+$amarillo-a100: scale-color(
+  $amarillo,
+  $saturation: 25%,
+  $lightness: 75%
+) !default;
+$amarillo-a200: scale-color(
+  $amarillo,
+  $saturation: 25%,
+  $lightness: 65%
+) !default;
+$amarillo-a400: scale-color(
+  $amarillo,
+  $saturation: 25%,
+  $lightness: 55%
+) !default;
+$amarillo-a700: scale-color(
+  $amarillo,
+  $saturation: 25%,
+  $lightness: 45%
+) !default;
+
+$naranja: #ff7e00;
+$naranja-50: scale-color($naranja, $saturation: 0%, $lightness: 90%) !default;
+$naranja-100: scale-color($naranja, $saturation: 0%, $lightness: 80%) !default;
+$naranja-200: scale-color($naranja, $saturation: 0%, $lightness: 70%) !default;
+$naranja-300: scale-color($naranja, $saturation: 0%, $lightness: 60%) !default;
+$naranja-400: scale-color($naranja, $saturation: 0%, $lightness: 50%) !default;
+$naranja-500: scale-color($naranja, $saturation: 0%, $lightness: 40%) !default;
+$naranja-600: scale-color($naranja, $saturation: 0%, $lightness: 30%) !default;
+$naranja-700: scale-color($naranja, $saturation: 0%, $lightness: 20%) !default;
+$naranja-800: scale-color($naranja, $saturation: 0%, $lightness: 10%) !default;
+$naranja-900: scale-color($naranja, $saturation: 0%, $lightness: 0%) !default;
+$naranja-a100: scale-color(
+  $naranja,
+  $saturation: 25%,
+  $lightness: 75%
+) !default;
+$naranja-a200: scale-color(
+  $naranja,
+  $saturation: 25%,
+  $lightness: 65%
+) !default;
+$naranja-a400: scale-color(
+  $naranja,
+  $saturation: 25%,
+  $lightness: 55%
+) !default;
+$naranja-a700: scale-color(
+  $naranja,
+  $saturation: 25%,
+  $lightness: 45%
+) !default;
+
+$gray: #96989a;
+$gray-50: scale-color($gray, $saturation: 0%, $lightness: 90%) !default;
+$gray-100: scale-color($gray, $saturation: 0%, $lightness: 80%) !default;
+$gray-200: scale-color($gray, $saturation: 0%, $lightness: 60%) !default;
+$gray-300: scale-color($gray, $saturation: 0%, $lightness: 40%) !default;
+$gray-400: scale-color($gray, $saturation: 0%, $lightness: 20%) !default;
+$gray-500: scale-color($gray, $saturation: 0%, $lightness: 0%) !default;
+$gray-600: scale-color($gray, $saturation: 0%, $lightness: -20%) !default;
+$gray-700: scale-color($gray, $saturation: 0%, $lightness: -35%) !default;
+$gray-800: scale-color($gray, $saturation: 0%, $lightness: -50%) !default;
+$gray-900: scale-color($gray, $saturation: 0%, $lightness: -80%) !default;
+
+$bordo: #5f0a0a; // ¿tiene sentido este color? CONFIRMAR
+
+/********************************************************************************************
+     USO DE LOS COLORES > Crear carpeta partial y meterlo dentro con el nombre '_brand.scss' o donde corresponda
+ ********************************************************************************************/
+
+$primary_color: $azul-900;
+$primary_color_variation: $azul-800;
+$primary_color_light: $azul-400;
+$background-sidebar-gradient1: $azul-900;
+$background-sidebar-gradient2: $azul-300;
+
+$light-gray: $gray-100;
+$dark-gray: $gray-800;
+
+$gray-text: $gray-600;
+$dark-text: $gray-800;
+
+/* TODO: falta reemplazar por colores de la paleta a partir de acá */
+$basic_button: #bdbdbd;
+$primary_button: $primary_color;
+$disabled_button: $gray-100;
+$alert_button: $rojo;
+$white: #fff;

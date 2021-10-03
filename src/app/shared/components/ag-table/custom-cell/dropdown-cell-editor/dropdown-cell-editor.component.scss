@@ -1,0 +1,17 @@
+::ng-deep {
+    .ag-popup-editor {
+        width: 20%;
+    }
+    .ag-root-wrapper {
+        /* ESTO ES PARA RENDERIZAR LAS
+        OPTIONS DE LA ULTIMA ROW DE LA TABLA*/
+        overflow: visible;
+    }
+}
+
+ng-select {
+    /*position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;*/
+}

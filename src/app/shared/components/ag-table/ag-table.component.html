@@ -1,0 +1,16 @@
+<ag-grid-angular
+    #myGrid
+    style="width: 100%; min-height: 150px;"
+    class="ag-theme-alpine"
+    domLayout='autoHeight'
+    [columnDefs]="gridOptions.columnDefs"
+    [rowData]="dataRows"
+    [gridOptions]="gridOptions"
+    [pagination]="agTableConfig.pagination"
+    [paginationPageSize]="agTableConfig.paginationPageSize"
+    [rowHeight]="agTableConfig.rowHeight"
+    [suppressRowClickSelection]="agTableConfig.suppressRowClickSelection"
+    [frameworkComponents]="frameworkComponents"
+    [rowSelection]="agTableConfig.rowSelection"
+    [pinnedTopRowData]="dataRowsPinned"
+></ag-grid-angular>

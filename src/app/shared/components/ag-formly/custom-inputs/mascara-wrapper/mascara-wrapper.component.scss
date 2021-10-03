@@ -1,0 +1,42 @@
+// @import "../../../../../../theme/variables.scss";
+
+.form-group {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 0;
+  .custom-input {
+    display: inline-block;
+    &:not(:last-child) {
+      padding-right: 5px;
+    }
+  }
+}
+
+/*.input-margin {
+  padding-right: 0.5rem;
+}
+
+.separator {
+  position: absolute;
+  margin-left: -7.5px;
+  top: 38px;
+}*/
+
+::ng-deep {
+  .formly-custom {
+    input {
+      background-image: none !important;
+      padding: 0px !important;
+      text-align: center !important;
+    }
+
+    small,
+    .small {
+      font-size: 65% !important;
+    }
+  }
+}
+
+label {
+  display: block;
+}

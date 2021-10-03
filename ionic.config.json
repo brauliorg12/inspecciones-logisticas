@@ -1,0 +1,7 @@
+{
+  "name": "inspecciones-logisticas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,32 @@
+<form
+  *ngIf="formData"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(formData.model)"
+  [ngClass]="formClass"
+  #formDirective="ngForm"
+>
+  <formly-form
+    class="form-container"
+    [ngStyle]="formData.formStyles"
+    [form]="form"
+    [fields]="formData.fields"
+    [model]="formData.model"
+    [options]="options"
+  >
+  </formly-form>
+  <div>
+    <app-button
+      *ngIf="submitButtonText"
+      typeButton="submit"
+      [ngStyle]="formData.submitButton.styles"
+      class="button-submit"
+      [classes]="
+        formData.submitButton.class ? formData.submitButton.class : 'primary'
+      "
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      {{ submitButtonText }}
+    </app-button>
+  </div>
+</form>

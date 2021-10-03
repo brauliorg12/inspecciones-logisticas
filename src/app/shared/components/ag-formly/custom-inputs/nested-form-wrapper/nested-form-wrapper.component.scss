@@ -1,0 +1,40 @@
+.nested-form {
+  padding: 15px;
+  /*border: 1px solid #ced4da;*/
+  border-radius: 5px;
+  // margin-bottom: 15px;
+
+  .nested-form-title {
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+  }
+
+  .nested-container {
+    .field-component-container {
+      grid-area: fields;
+    }
+
+    .button-submit-container {
+      grid-area: submit;
+      display: flex;
+      align-items: center;
+    }
+
+    &.left,
+    &.right {
+      display: grid;
+      gap: 1rem;
+    }
+
+    &.right {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "fields submit";
+    }
+
+    &.left {
+      grid-template-columns: auto 1fr;
+      grid-template-areas: "submit fields";
+    }
+  }
+}

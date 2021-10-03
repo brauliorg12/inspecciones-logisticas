@@ -1,0 +1,17 @@
+.expediente-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+
+  .buttons {
+    display: flex;
+    align-self: flex-end;
+
+    app-button {
+      margin-top: 0.625rem;
+      margin-left: 0.3125rem;
+      margin-right: 0.3125rem;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.mat-drawer.semi-drawer {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-property: width;
+
+  transform: translate3d(0, 0, 0);
+  visibility: visible !important;
+}
+
+.mat-expansion-panel-content {
+  overflow: auto !important;
+}
+
+.mat-drawer-inner-container {
+  overflow-x: hidden !important;
+  box-shadow: 3px 0px 12px 3px scale-color($color: $primary_color, $alpha: -10%);
+  background: #163a6e;
+}
+
+.mat-button,
+.mat-flat-button,
+.mat-stroked-button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-fab,
+.mat-mini-fab {
+  .mat-button-wrapper > * {
+    &.vertical-align-bottom {
+      vertical-align: bottom;
+    }
+    &.vertical-align-text-bottom {
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+.mat-tab-body-content {
+  padding: 15px 4px;
+  overflow: hidden !important;
+}
+
+.mat-tab-label-content {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: $azul-900;
+}
+
+.mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label-active.ng-star-inserted {
+  font-weight: 700;
+  color: $azul-900;
+}

@@ -1,0 +1,132 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* BOOTSTRAP */
+// @import "~bootstrap/scss/bootstrap";
+
+/* NG-SELECT */
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss";
+@import "theme/base-form.scss";
+@import "theme/buttons.scss";
+@import "theme/expediente-common.scss";
+@import "theme/material-overrides.scss";
+@import "theme/variables.scss";
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+// body {
+//   margin: 0;
+//   font-family: "PT Sans", sans-serif;
+// }
+
+.ag-theme-alpine {
+  @include ag-theme-alpine(
+    (
+      header-background-color: $azul-700,
+      header-foreground-color: white,
+      secondary-foreground-color: white,
+    )
+  );
+  .ag-paging-panel,
+  .ag-icon {
+    color: $gray-800;
+  }
+  .ag-icon-menu,
+  .ag-icon-asc,
+  .ag-icon-desc {
+    color: white;
+  }
+
+  .ag-header-cell {
+    .ag-header-cell-label {
+      justify-content: center;
+      overflow: visible;
+      padding-left: 11px;
+      padding-right: 11px;
+    }
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+  .ag-cell {
+    line-height: 28px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+  .ag-row {
+    height: 35px;
+  }
+}
+.col-1-5 {
+  flex: 0 0 12.3%;
+  max-width: 12.3%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.active {
+  background-color: #005099;
+  border-radius: 4px;
+}
+
+app-dropdown-cell-renderer {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+//Estructura de asiento
+@media print {
+  @page {
+    size: A4 landscape !important;
+    margin: 0 !important;
+  }
+
+  .my-custom-dialog-class {
+    max-width: 100% !important;
+  }
+
+  .cabecera-body {
+    text-align: left !important;
+  }
+
+  .asiento-body {
+    overflow: hidden !important;
+    text-align: center !important;
+    display: block !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .no-print,
+  .observation,
+  app-button {
+    display: none !important;
+  }
+}

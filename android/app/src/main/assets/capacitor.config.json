@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "inspecciones-logisticas",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

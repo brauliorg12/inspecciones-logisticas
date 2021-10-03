@@ -1,0 +1,49 @@
+@import '../../../../../../theme/variables.scss';
+
+.d-flex { 
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  
+  &:not(.empty):not(:first-of-type) {
+    margin-left: 5px;  
+  }
+
+  button {
+    &.icon-button {
+      $size: 30px;
+      width: $size;
+      height: $size;
+    }
+
+    &.font-icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.primary {
+      background-color: $primary_color_variation;
+      color: $white;
+    }
+  }
+
+  mat-icon {
+    &.svg-icon {
+      width: 100%;
+      height: 100%;
+    }
+    &.font-icon {
+      font-size: 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 1px;
+    }
+  }
+}

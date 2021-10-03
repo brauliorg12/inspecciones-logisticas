@@ -1,0 +1,32 @@
+@import "./variables.scss";
+@import "./coa-theme";
+
+.form-container {
+  margin: 0 !important;
+}
+.error-message {
+  color: #dc3545;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+select.form-control[size],
+select.form-control[multiple] {
+  height: 250px;
+}
+
+.invalid-feedback {
+  position: absolute;
+  white-space: nowrap;
+  width: 100px;
+}

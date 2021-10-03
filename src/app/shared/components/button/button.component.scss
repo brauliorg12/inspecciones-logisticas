@@ -1,0 +1,121 @@
+@import '../../../../theme/variables.scss';
+
+/* :host {
+    width: 100%;
+} */
+button {
+  display: flex;
+  line-height: 1.3rem;
+  font-size: 1rem;
+  justify-content: center;
+  /* text-transform: capitalize;
+  */
+  color: #ffffff;
+  /* background-color: #fff; */
+  border: 0;
+  border-radius: 4px;
+  padding: 0.5rem 0.8rem;
+
+  /*min-width: 12.5rem;*/
+  /* max-height: 35px;
+  */
+  //margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 100ms;
+
+  &.basic {
+    /* border: 1px solid #f1f1f1; */
+    color: #453c90;
+    background-color: $white;
+  }
+
+  &.block {
+    width: 100% !important;
+  }
+
+  &.parametriaFix {
+    margin-top: 1rem;
+  }
+
+  &.primary {
+    /* border: 1px solid $primary_color_variation; */
+    background-color: $primary_color_variation;
+    color: scale-color($color: $white, $alpha: -17.5%);
+
+    &:hover, &.hover {
+      background-color: scale-color($color: $primary_color_variation, $alpha: -10%);
+      color: scale-color($color: $white, $alpha: 0%);
+    }
+
+    &:active, &.active {
+      background-color: $primary_color;
+      color: scale-color($color: $white, $alpha: -30%);
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0px 0px 6px 2px scale-color($color: $primary_color, $alpha: -45%);
+    }
+  }
+
+  &.alert {
+    /* border: 1px solid $alert_button; */
+    background-color: $alert_button;
+    color: scale-color($color: $white, $alpha: -17.5%);
+
+    &:hover, &.hover {
+      background-color: scale-color($color: $alert_button, $alpha: -10%);
+      color: scale-color($color: $white, $alpha: 0%);
+    }
+
+    &:active, &.active {
+      background-color: $primary_color;
+      color: scale-color($color: $white, $alpha: -30%);
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0px 0px 6px 2px scale-color($color: $primary_color, $alpha: -45%);
+    }
+  }
+
+  &:disabled, &.disabled {
+    /* border: 1px solid $disabled_button; */
+    background-color: $disabled_button;
+    color: scale-color($color: $gray, $alpha: -25%);
+    cursor: not-allowed;
+
+    &:focus, &.focus, &:active, &.active, &:hover, &.hover {
+      background-color: $disabled_button;
+      color: scale-color($color: $gray, $alpha: -25%);
+      outline: 0;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+
+  &.nav {
+    justify-content: flex-start;
+    border: none;
+    background-color: transparent;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    width: 100%;
+
+    &:hover {
+      background-color: #577bae;
+    }
+
+    &:focus, &:active {
+      outline: 0;
+    }
+  }
+
+  &.table-action {
+    border: 1px solid $primary_button;
+    background-color: $primary_button;
+    padding: 5px;
+    font-size: 10px;
+  }
+}
