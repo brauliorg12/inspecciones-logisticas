@@ -101,6 +101,10 @@ app-dropdown-cell-renderer {
   cursor: pointer;
 }
 
+.ag-theme-alpine .ag-popup-child:not(.ag-tooltip-custom) {
+  min-width: 150px !important;
+}
+
 //Estructura de asiento
 @media print {
   @page {

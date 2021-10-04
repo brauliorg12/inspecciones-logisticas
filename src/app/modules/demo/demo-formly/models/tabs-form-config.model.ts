@@ -1,40 +1,40 @@
-import { FormlyFieldConfig } from '@ngx-formly/core';
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
 import { NestedFormTemplateOptions } from '@shared/components/ag-formly/custom-inputs/nested-form-wrapper/models/nested-form-template-options';
-import { mockMotosTableModelParteExternaBase } from '../../../motos-table-model';
+import { mockMotosTableModelParteExternaBase } from '../../../../models/motos-table-model';
+import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
+import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
 
-let check = 'false';
-const dataTablaArray = [];
+const setDefault = () => {
+  // Funcion para limpiar por defecto la tabla
+  console.log(mockMotosTableModelParteExternaBase);
+
+  return mockMotosTableModelParteExternaBase;
+};
+
+export const getEstados = (): any => {
+  const result: any[] = [
+    { id: 1, value: 'M' },
+    { id: 2, value: 'R' },
+    { id: 2, value: 'B' },
+  ];
+  return result;
+};
 
 export const tabsFormConfig: IAgFormlyConfig = {
-  submitButton: {
-    text: 'Guardar',
-    position: 'bottom',
-  },
+  // submitButton: {
+  //   text: 'Guardar',
+  //   position: 'bottom',
+  // },
   model: {
     resultados: {
       datosTabla: setDefault(),
     },
   },
   formState: {
-    resetModelWhenSubmit: true, // para resetear lo encontre aca chusmenado el codigo, para submit global, no se si nested pero en la doc veo que se puede usar el (click)="options.resetModel()" desde html
+    resetModelWhenSubmit: true,
 
     dataOptionsDropdown: {
       // Data para dropdown
-      servidores: {
-        options: [
-          {
-            // ! Estatico
-            valor: 'server_p',
-            descripcion: 'Servidor Principal',
-          },
-          {
-            valor: 'server_s',
-            descripcion: 'Servidor Secundario',
-          },
-        ],
-        // url: `https://dev-sql-sir-rpi-be.coasa.com.ar/api/v1/` + CanalesDto.endpoint // ! Por endpoint
-      },
     },
   },
   fields: [
@@ -79,9 +79,9 @@ export const tabsFormConfig: IAgFormlyConfig = {
               },
             ],
             attributes: {
-              searchable: 'true', // Hacerlo buscable
-              multiple: 'true', // Utilizo la seleccion multiple de ng-select
-              appendTo: 'body', // Aca agregue el appendTo como funcionalidad del modulo compartido para superponer el selector y que no quede debajo a nivel de css lo trae el propio ng-select
+              searchable: 'true',
+              multiple: 'true',
+              // appendTo: 'body',
               bindValueOp: 'value',
               bindLabelOp: 'label',
             },
@@ -134,9 +134,9 @@ export const tabsFormConfig: IAgFormlyConfig = {
               },
             ],
             attributes: {
-              searchable: 'true', // Hacerlo buscable
-              multiple: 'true', // Utilizo la seleccion multiple de ng-select
-              appendTo: 'body', // Aca agregue el appendTo como funcionalidad del modulo compartido para superponer el selector y que no quede debajo a nivel de css lo trae el propio ng-select
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
               bindValueOp: 'value',
               bindLabelOp: 'label',
             },
@@ -148,7 +148,6 @@ export const tabsFormConfig: IAgFormlyConfig = {
           type: 'radio',
           className: 'col-6',
           templateOptions: {
-            // label: 'ESTADO',
             required: false,
             options: [
               {
@@ -263,28 +262,14 @@ export const tabsFormConfig: IAgFormlyConfig = {
         },
         // Tabla
         {
-          key: 'resultados', // Key general del group
+          key: 'resultados',
           wrappers: ['nested-form'],
           templateOptions: {
             label: 'Resultados Formulario',
             required: false,
-            showSubmit: false,
-            submitText: 'LLenar Tabla',
-            nestedFormSubmit: (model, field) => {
-              // if (field.parent?.model?.datosPersonales) {
-              //   // aca condiciono que sea valido al menos datospersonales
-              //   const datatabla = {
-              //     ...field.parent.model.datosPersonales,
-              //     ...field.parent.model.Intereses,
-              //   }; // creo un solo objeto de varios fields
-              //   dataTablaArray.push(datatabla);
-              //   field.parent.model.resultados.datosTabla = [
-              //     ...dataTablaArray,
-              //   ]; // se los paso a la tabla
-              // } else {
-              field.parent.model.resultados.datosTabla = setDefault(); // Limpio la data por default
-              // }
-            },
+            submitText: 'Guardar',
+            nestedFormSubmit: (model, field) =>
+              (field.parent.model.resultados.datosTabla = setDefault()),
           } as NestedFormTemplateOptions,
           fieldGroupClassName: 'row',
           fieldGroup: [
@@ -292,45 +277,58 @@ export const tabsFormConfig: IAgFormlyConfig = {
             {
               key: 'datosTabla',
               wrappers: ['render-table'],
-              // type: 'grid',
+
               fieldGroup: [],
-              className: 'col-12',
-              // hooks: { // ! Falta averiguar como funciona solo
-              //   onInit: (field: FormlyFieldConfig) => {
-              //     console.log(field);
-
-              // const formState = field.options.formState;
-              // const gridOptions = field.templateOptions.gridOptions;
-              // console.log(gridOptions);
-
-              //     // gridOptions.onRowSelected = (event: RowSelectedEvent) => {
-              //     //   if (formState.buscadorPersonas?.onRowSelected) formState.buscadorPersonas.onRowSelected(event, field);
-              //     //   else console.info('BuscadorPersonas: se debe agregar la funcion buscadorPersonas.onRowSelected(event: RowSelectedEvent, field: FormlyFieldConfig) en el formState.');
-              //     // };
-              //   }
-              // },
+              className: 'col-12 mb-3',
               templateOptions: {
                 label: 'Resultados',
                 gridOptions: {
                   rowSelection: 'single',
+                  pagination: true,
+                  paginationPageSize: 5,
                   columnDefs: [
                     {
-                      // Estan todos en la docs, para que sirven
                       headerName: 'PARTE EXTERNA',
                       resizable: true,
                       sortable: true,
-                      // filter: true,
-                      flex: 1,
+                      filter: true,
+                      flex: 2,
                       field: 'parteExterna',
                       tooltipField: 'PARTE EXTERNA',
                       autoHeight: true,
+                      minWidth: 200,
                     },
                     {
                       headerName: 'ESTADO',
-                      field: 'estado',
-                      flex: 1,
+                      field: 'estadoTable',
+                      cellStyle: { textAlign: 'center', position: 'relative' },
+                      editable: true,
+                      singleClickEdit: true,
+                      filter: false,
+                      sortable: true,
+                      flex: 0.7,
                       resizable: true,
-                      autoHeight: true,
+                      minWidth: 200,
+                      cellRendererFramework: DropdownCellRendererComponent,
+                      cellEditorFramework: DropdownCellEditorComponent,
+                      cellEditorParams: {
+                        values: getEstados(),
+                        bindLabelOp: 'value',
+                        bindValueOp: 'value',
+                        gridDropdownChange: (params: any) => {
+                          const row: any = params.data;
+                          console.log(row);
+                        },
+                      },
+                      // valueGetter: (params) => {
+                      //   if (params.data.habilitacion) {
+                      //     params.data.value = 'Si';
+                      //     return 'Si';
+                      //   } else {
+                      //     params.data.value = 'No';
+                      //     return 'No';
+                      //   }
+                      // },
                     },
                     {
                       headerName: 'OBSERVACIONES',
@@ -339,28 +337,8 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       resizable: true,
                       autoHeight: true,
                       editable: true,
+                      minWidth: 200,
                     },
-                    // {
-                    //   headerName: 'PARTE EXTERNA',
-                    //   field: 'address.valueProvincia.nombre',
-                    //   flex: 1,
-                    //   resizable: true,
-                    //   autoHeight: true,
-                    // },
-                    // {
-                    //   headerName: 'ESTADO',
-                    //   field: 'edad',
-                    //   flex: 1,
-                    //   resizable: true,
-                    //   autoHeight: true,
-                    // },
-                    // {
-                    //   headerName: 'OBSERVACIONES',
-                    //   field: 'edad',
-                    //   flex: 1,
-                    //   resizable: true,
-                    //   autoHeight: true,
-                    // },
                   ],
                 },
               },
@@ -370,118 +348,4 @@ export const tabsFormConfig: IAgFormlyConfig = {
       ],
     },
   ],
-
-  // submitButton: {
-  //     text: 'Continuar',
-  //     position: 'bottom',
-  // },
-  // model: {},
-  // fields: [
-  //     {
-  //         type: 'tabs',
-  //         fieldGroup: [
-  //             {
-  //                 key: 'datosDomicilio',
-  //                 wrappers: ['nested-form'],
-  //                 templateOptions: {
-  //                     label: 'Domicilio',
-  //                     submitText: 'Validar domicilio',
-  //                     nestedFormSubmit: model => console.log('Nested submit: ', model),
-  //                 } as NestedFormTemplateOptions,
-  //                 fieldGroupClassName: 'row',
-  //                 fieldGroup: [
-  //                     {
-  //                         key: 'direccion',
-  //                         type: 'address-inputs',
-  //                         className: 'col-12',
-  //                         templateOptions: {
-  //                             addressWrapperAttributes: {
-  //                                 provincia: {
-  //                                     required: 'true'
-  //                                 },
-  //                                 localidad: {
-  //                                     required: 'true'
-  //                                 },
-  //                                 calle: {
-  //                                     required: 'true'
-  //                                 },
-  //                             }
-  //                         },
-  //                     },
-  //                 ]
-  //             },
-  //             {
-  //                 templateOptions: { label: 'Personal data' },
-  //                 fieldGroup: [
-  //                   {
-  //                     key: 'firstname',
-  //                     type: 'input',
-  //                     templateOptions: {
-  //                       label: 'First name',
-  //                       required: false,
-  //                     },
-  //                   },
-  //                   {
-  //                     key: 'age',
-  //                     type: 'input',
-  //                     templateOptions: {
-  //                       type: 'number',
-  //                       label: 'Age',
-  //                       required: false,
-  //                     },
-  //                   },
-  //                 ],
-  //             },
-  //             {
-  //                 templateOptions: { label: 'Destination' },
-  //                 fieldGroup: [
-  //                   {
-  //                     key: 'country',
-  //                     type: 'input',
-  //                     templateOptions: {
-  //                       label: 'Country',
-  //                       required: false,
-  //                     },
-  //                   },
-  //                 ],
-  //             },
-  //             {
-  //                 templateOptions: { label: 'Day of the trip' },
-  //                 fieldGroup: [
-  //                   {
-  //                     key: 'day',
-  //                     type: 'input',
-  //                     templateOptions: {
-  //                       type: 'date',
-  //                       label: 'Day of the trip',
-  //                       required: false,
-  //                     },
-  //                   },
-  //                 ],
-  //             },
-  //         ]
-  //     }
-  // ]
 };
-
-function setDefault() {
-  // Funcion para limpiar por defecto la tabla
-  console.log(mockMotosTableModelParteExternaBase);
-
-  return mockMotosTableModelParteExternaBase;
-  // return [
-  //   {
-  //     nombre: '-',
-  //     edad: '-',
-  //     address: {
-  //       valueProvincia: {
-  //         nombre: '-',
-  //       },
-  //       valueLocalidad: {
-  //         nombre: '-',
-  //       },
-  //     },
-  //     deportes: '-',
-  //   },
-  // ];
-}

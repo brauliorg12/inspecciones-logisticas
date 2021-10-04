@@ -1,17 +1,15 @@
 ::ng-deep {
-    .ag-popup-editor {
-        width: 20%;
-    }
-    .ag-root-wrapper {
-        /* ESTO ES PARA RENDERIZAR LAS
+  .ag-popup-editor {
+    width: 20%;
+  }
+  .ag-root-wrapper {
+    /* ESTO ES PARA RENDERIZAR LAS
         OPTIONS DE LA ULTIMA ROW DE LA TABLA*/
-        overflow: visible;
-    }
+    overflow: visible;
+  }
 }
 
 ng-select {
-    /*position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 99;*/
+  min-width: 150px !important;
+  z-index: 99;
 }
