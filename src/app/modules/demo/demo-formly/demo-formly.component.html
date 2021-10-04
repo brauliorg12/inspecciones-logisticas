@@ -1,17 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Inspecciones Logísticas </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content overflow-scroll="true">
   <!-- <div class="container"> -->
-    <div class="row p-3">
-      <div class="col-12">
-        <div class="text-center"><h2>Inspecciones Logísticas</h2></div>
-        <br />
-        <br />
-        <app-ag-formly
-          class="form-create"
-          [formData]="tabsForms"
-        ></app-ag-formly>
-      </div>
+  <div class="row p-3">
+    <div class="col-12">
+      <app-ag-formly class="form-create" [formData]="tabsForms"></app-ag-formly>
     </div>
-    <!-- <div class="row">
+  </div>
+  <!-- <div class="row">
     <div class="col-12">
       <h4>Repeating Section</h4>
       <app-ag-formly
