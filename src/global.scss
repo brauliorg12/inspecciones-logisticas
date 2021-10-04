@@ -32,7 +32,7 @@
 @import "~@ng-select/ng-select/themes/material.theme.css";
 
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
-@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine-dark/sass/_ag-theme-alpine-dark-mixin.scss";
 @import "theme/base-form.scss";
 @import "theme/buttons.scss";
 @import "theme/expediente-common.scss";
@@ -73,14 +73,14 @@
     padding-left: 11px;
     padding-right: 11px;
   }
-  .ag-cell {
-    line-height: 28px;
-    padding-left: 11px;
-    padding-right: 11px;
-  }
-  .ag-row {
-    height: 35px;
-  }
+  // .ag-cell {
+  //   line-height: 28px;
+  //   padding-left: 11px;
+  //   padding-right: 11px;
+  // }
+  // .ag-row {
+  //   height: 35px;
+  // }
 }
 .col-1-5 {
   flex: 0 0 12.3%;

@@ -1,6 +1,7 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
 import { NestedFormTemplateOptions } from '@shared/components/ag-formly/custom-inputs/nested-form-wrapper/models/nested-form-template-options';
+import { mockMotosTableModelParteExternaBase } from '../../../motos-table-model';
 
 let check = 'false';
 const dataTablaArray = [];
@@ -41,21 +42,21 @@ export const tabsFormConfig: IAgFormlyConfig = {
       type: 'tabs',
       fieldGroup: [
         {
-          key: 'datosPersonales',
+          // key: 'datosPersonales',
           // modelOptions: { // ! No encontre mucho al respecto, al parecer el updateOn es un evento propio de Angular que se podria usar aca pero el debounce no se si es para el modelo entero, o cada un en particular, no sveo que hagao mucho
           //   updateOn: 'blur', // ! De todos modos hice otro debounce que encontré, y lo aplique, con link de referencia
           //   debounce: {
           //     default: 2000,
           //   },
           // },
-          expressionProperties: {
-            'model.isvalid': (a, b, field) => {
-              return field.formControl.valid;
-            },
-          },
+          // expressionProperties: {
+          //   'model.isvalid': (a, b, field) => {
+          //     return field.formControl.valid;
+          //   },
+          // },
           templateOptions: {
             label: 'Info personal',
-            required: true,
+            required: false,
           },
           fieldGroupClassName: 'row',
 
@@ -65,25 +66,23 @@ export const tabsFormConfig: IAgFormlyConfig = {
               wrappers: ['nested-form'],
               templateOptions: {
                 label: 'Resultados Formulario',
-                required: true,
+                required: false,
                 showSubmit: false,
                 submitText: 'LLenar Tabla',
                 nestedFormSubmit: (model, field) => {
-                  console.log(model, field);
-
-                  if (field.parent?.parent?.model?.datosPersonales?.isvalid) {
-                    // aca condiciono que sea valido al menos datospersonales
-                    const datatabla = {
-                      ...field.parent.parent.model.datosPersonales,
-                      ...field.parent.parent.model.Intereses,
-                    }; // creo un solo objeto de varios fields
-                    dataTablaArray.push(datatabla);
-                    field.parent.model.resultados.datosTabla = [
-                      ...dataTablaArray,
-                    ]; // se los paso a la tabla
-                  } else {
+                  // if (field.parent?.model?.datosPersonales) {
+                  //   // aca condiciono que sea valido al menos datospersonales
+                  //   const datatabla = {
+                  //     ...field.parent.model.datosPersonales,
+                  //     ...field.parent.model.Intereses,
+                  //   }; // creo un solo objeto de varios fields
+                  //   dataTablaArray.push(datatabla);
+                  //   field.parent.model.resultados.datosTabla = [
+                  //     ...dataTablaArray,
+                  //   ]; // se los paso a la tabla
+                  // } else {
                     field.parent.model.resultados.datosTabla = setDefault(); // Limpio la data por default
-                  }
+                  // }
                 },
               } as NestedFormTemplateOptions,
               fieldGroupClassName: 'row',
@@ -99,9 +98,9 @@ export const tabsFormConfig: IAgFormlyConfig = {
                   //   onInit: (field: FormlyFieldConfig) => {
                   //     console.log(field);
 
-                  //     const formState = field.options.formState;
-                  //     const gridOptions = field.templateOptions.gridOptions;
-                  //     console.log(gridOptions);
+                  // const formState = field.options.formState;
+                  // const gridOptions = field.templateOptions.gridOptions;
+                  // console.log(gridOptions);
 
                   //     // gridOptions.onRowSelected = (event: RowSelectedEvent) => {
                   //     //   if (formState.buscadorPersonas?.onRowSelected) formState.buscadorPersonas.onRowSelected(event, field);
@@ -117,50 +116,50 @@ export const tabsFormConfig: IAgFormlyConfig = {
                         {
                           // Estan todos en la docs, para que sirven
                           headerName: 'PARTE EXTERNA',
-                          editable: true,
                           resizable: true,
                           sortable: true,
                           // filter: true,
                           flex: 1,
-                          field: 'nombre',
-                          tooltipField: 'Nombre de la info personal',
+                          field: 'parteExterna',
+                          tooltipField: 'PARTE EXTERNA',
                           autoHeight: true,
                         },
                         {
                           headerName: 'ESTADO',
-                          field: 'edad',
+                          field: 'estado',
                           flex: 1,
                           resizable: true,
                           autoHeight: true,
                         },
                         {
                           headerName: 'OBSERVACIONES',
-                          field: 'edad',
+                          field: 'observaciones',
                           flex: 1,
                           resizable: true,
                           autoHeight: true,
+                          editable: true,
                         },
-                        {
-                          headerName: 'PARTE EXTERNA',
-                          field: 'address.valueProvincia.nombre',
-                          flex: 1,
-                          resizable: true,
-                          autoHeight: true,
-                        },
-                        {
-                          headerName: 'ESTADO',
-                          field: 'edad',
-                          flex: 1,
-                          resizable: true,
-                          autoHeight: true,
-                        },
-                        {
-                          headerName: 'OBSERVACIONES',
-                          field: 'edad',
-                          flex: 1,
-                          resizable: true,
-                          autoHeight: true,
-                        },
+                        // {
+                        //   headerName: 'PARTE EXTERNA',
+                        //   field: 'address.valueProvincia.nombre',
+                        //   flex: 1,
+                        //   resizable: true,
+                        //   autoHeight: true,
+                        // },
+                        // {
+                        //   headerName: 'ESTADO',
+                        //   field: 'edad',
+                        //   flex: 1,
+                        //   resizable: true,
+                        //   autoHeight: true,
+                        // },
+                        // {
+                        //   headerName: 'OBSERVACIONES',
+                        //   field: 'edad',
+                        //   flex: 1,
+                        //   resizable: true,
+                        //   autoHeight: true,
+                        // },
                       ],
                     },
                   },
@@ -170,31 +169,231 @@ export const tabsFormConfig: IAgFormlyConfig = {
 
             // Simple texto y requerido
             {
-              key: 'movilRo',
+              key: 'movilRoId',
+              type: 'radio',
               className: 'col-6',
-              type: 'input',
               templateOptions: {
                 label: 'MOVIL R.O./O.I.',
-                required: true,
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: 'Auto/Camioneta',
+                  },
+                  {
+                    value: 2,
+                    label: 'Moto',
+                  },
+                ],
               },
             },
             {
-              key: 'estadoGeneral',
+              key: 'movilRoId',
+              type: 'dropdown-input',
               className: 'col-6',
-              type: 'input',
               templateOptions: {
                 label: 'MOVIL R.O./O.I.',
-                required: true,
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: 'Auto/Camioneta',
+                  },
+                  {
+                    value: 2,
+                    label: 'Moto',
+                  },
+                ],
+                attributes: {
+                  searchable: 'true', // Hacerlo buscable
+                  multiple: 'true', // Utilizo la seleccion multiple de ng-select
+                  appendTo: 'body', // Aca agregue el appendTo como funcionalidad del modulo compartido para superponer el selector y que no quede debajo a nivel de css lo trae el propio ng-select
+                  bindValueOp: 'value',
+                  bindLabelOp: 'label',
+                },
               },
             },
 
+            {
+              key: 'estadoGeneralId',
+              type: 'radio',
+              className: 'col-6',
+              templateOptions: {
+                label: 'ESTADO',
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: 'Servicio',
+                  },
+                  {
+                    value: 2,
+                    label: 'Radicado',
+                  },
+                  {
+                    value: 3,
+                    label: 'Irrecuperable',
+                  },
+                ],
+              },
+            },
+
+            {
+              key: 'estadoGeneralId',
+              type: 'dropdown-input',
+              className: 'col-6',
+              templateOptions: {
+                label: 'ESTADO',
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: 'Servicio',
+                  },
+                  {
+                    value: 2,
+                    label: 'Radicado',
+                  },
+                  {
+                    value: 3,
+                    label: 'Irrecuperable',
+                  },
+                ],
+                attributes: {
+                  searchable: 'true', // Hacerlo buscable
+                  multiple: 'true', // Utilizo la seleccion multiple de ng-select
+                  appendTo: 'body', // Aca agregue el appendTo como funcionalidad del modulo compartido para superponer el selector y que no quede debajo a nivel de css lo trae el propio ng-select
+                  bindValueOp: 'value',
+                  bindLabelOp: 'label',
+                },
+              },
+            },
+
+            {
+              key: 'ministerioId',
+              type: 'radio',
+              className: 'col-6',
+              templateOptions: {
+                // label: 'ESTADO',
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: '  MINISTERIO',
+                  },
+                  {
+                    value: 2,
+                    label: 'COMODATO',
+                  },
+                  {
+                    value: 2,
+                    label: 'FORTALECIMIENTO',
+                  },
+                ],
+              },
+            },
+
+            {
+              key: 'dependencia',
+              className: 'col-6',
+              type: 'input',
+              templateOptions: {
+                label: 'DEPENDENCIA',
+              },
+            },
+
+            {
+              key: 'avlId',
+              type: 'radio',
+              className: 'col-6',
+              templateOptions: {
+                label: 'AVL',
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: 'SI',
+                  },
+                  {
+                    value: 2,
+                    label: 'NO',
+                  },
+                ],
+              },
+            },
+
+            {
+              key: 'marca',
+              className: 'col-4',
+              type: 'input',
+              templateOptions: {
+                label: 'MARCA',
+              },
+            },
+
+            {
+              key: 'modelo',
+              className: 'col-4',
+              type: 'input',
+              templateOptions: {
+                label: 'MODELO',
+              },
+            },
+
+            {
+              key: 'anio',
+              className: 'col-4',
+              type: 'input',
+              templateOptions: {
+                label: 'AÑO',
+              },
+            },
+
+            {
+              key: 'km',
+              className: 'col-4',
+              type: 'input',
+              templateOptions: {
+                type: 'number',
+                label: 'KM',
+              },
+            },
+
+            {
+              key: 'dominio',
+              className: 'col-4',
+              type: 'input',
+              templateOptions: {
+                label: 'DOMINIO',
+              },
+            },
+
+            {
+              key: 'tipoId',
+              type: 'radio',
+              className: 'col-6',
+              templateOptions: {
+                label: 'TIPO',
+                required: false,
+                options: [
+                  {
+                    value: 1,
+                    label: '4x2',
+                  },
+                  {
+                    value: 2,
+                    label: '4x4',
+                  },
+                ],
+              },
+            },
             // Direccion usando ya el addres inputs de aca
             // {
             //   key: 'address',
             //   className: 'col-12',
             //   type: 'address-inputs',
             //   templateOptions: {
-            //     // required: true, // ! Veo que no funciona, debe estar establecido en el custom
+            //     // required: false, // ! Veo que no funciona, debe estar establecido en el custom
             //     // Configuraciones opcionales
             //     addressWrapper: {},
             //     addressWrapperAttributes: {
@@ -211,7 +410,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
               templateOptions: {
                 type: 'number',
                 label: 'Edad',
-                required: true,
+                required: false,
                 // max: 3, // Veo que no funciona por lo que vi puede ser propio de formly el problema
                 // minLength: 1
               },
@@ -361,7 +560,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
               templateOptions: {
                 label: 'Deporte/s',
                 placeholder: 'Seleccione uno o varios deportes de su interes:',
-                required: true,
+                required: false,
                 options: [
                   { id: 'F', label: 'Futbol' },
                   { id: 'B', label: 'Basket' },
@@ -387,7 +586,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
               className: 'col-12',
               templateOptions: {
                 label: '¿Cuántas horas le dedicas a los deportes al día?',
-                required: true,
+                required: false,
                 options: [
                   { id: '1', label: '1' },
                   { id: '2', label: '2' },
@@ -444,7 +643,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
               templateOptions: {
                 placeholder: 'Seleccione un servidor',
                 label: 'Servidores',
-                required: true,
+                required: false,
                 attributes: {
                   searchable: 'true',
                   clearable: 'true', // Habilita limpiar el input // ! Lo saque de la doc
@@ -462,7 +661,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
               templateOptions: {
                 label: 'Dirección IP del Servidor',
                 pattern: /(\d{1,3}\.){3}\d{1,3}/,
-                required: true,
+                required: false,
               },
               validation: {
                 // Uso la validacion en este caso como en la doc, uso pattern
@@ -582,7 +781,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
   //                     type: 'input',
   //                     templateOptions: {
   //                       label: 'First name',
-  //                       required: true,
+  //                       required: false,
   //                     },
   //                   },
   //                   {
@@ -591,7 +790,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
   //                     templateOptions: {
   //                       type: 'number',
   //                       label: 'Age',
-  //                       required: true,
+  //                       required: false,
   //                     },
   //                   },
   //                 ],
@@ -604,7 +803,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
   //                     type: 'input',
   //                     templateOptions: {
   //                       label: 'Country',
-  //                       required: true,
+  //                       required: false,
   //                     },
   //                   },
   //                 ],
@@ -618,7 +817,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
   //                     templateOptions: {
   //                       type: 'date',
   //                       label: 'Day of the trip',
-  //                       required: true,
+  //                       required: false,
   //                     },
   //                   },
   //                 ],
@@ -630,19 +829,22 @@ export const tabsFormConfig: IAgFormlyConfig = {
 
 function setDefault() {
   // Funcion para limpiar por defecto la tabla
-  return [
-    {
-      nombre: '-',
-      edad: '-',
-      address: {
-        valueProvincia: {
-          nombre: '-',
-        },
-        valueLocalidad: {
-          nombre: '-',
-        },
-      },
-      deportes: '-',
-    },
-  ];
+  console.log(mockMotosTableModelParteExternaBase);
+
+  return mockMotosTableModelParteExternaBase;
+  // return [
+  //   {
+  //     nombre: '-',
+  //     edad: '-',
+  //     address: {
+  //       valueProvincia: {
+  //         nombre: '-',
+  //       },
+  //       valueLocalidad: {
+  //         nombre: '-',
+  //       },
+  //     },
+  //     deportes: '-',
+  //   },
+  // ];
 }

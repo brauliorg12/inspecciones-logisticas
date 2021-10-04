@@ -1,13 +1,17 @@
-<!-- <div class="container"> -->
-<div class="row">
-  <div class="col-12">
-    <div class="text-center"><h2>Inspecciones Logísticas</h2></div>
-    <br />
-    <br />
-    <app-ag-formly class="form-create" [formData]="tabsForms"></app-ag-formly>
-  </div>
-</div>
-<!-- <div class="row">
+<ion-content overflow-scroll="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center"><h2>Inspecciones Logísticas</h2></div>
+        <br />
+        <br />
+        <app-ag-formly
+          class="form-create"
+          [formData]="tabsForms"
+        ></app-ag-formly>
+      </div>
+    </div>
+    <!-- <div class="row">
     <div class="col-12">
       <h4>Repeating Section</h4>
       <app-ag-formly
@@ -43,4 +47,5 @@
       ></app-ag-formly>
     </div>
   </div> -->
-<!-- </div> -->
+  </div>
+</ion-content>

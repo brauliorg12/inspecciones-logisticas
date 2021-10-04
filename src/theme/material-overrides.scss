@@ -16,6 +16,9 @@
   box-shadow: 3px 0px 12px 3px scale-color($color: $primary_color, $alpha: -10%);
   background: #163a6e;
 }
+.mat-form-field {
+  font-size: 18px !important;
+}
 
 .mat-button,
 .mat-flat-button,
@@ -52,4 +55,15 @@
 .mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label-active.ng-star-inserted {
   font-weight: 700;
   color: $azul-900;
+}
+
+formly-field-mat-radio {
+  .mat-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .mat-radio-button {
+    margin: 5px;
+  }
 }
