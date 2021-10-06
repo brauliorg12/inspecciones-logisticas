@@ -3,8 +3,12 @@
     <ion-title> Moto </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="selectImage()">
+      <ion-button (click)="addNewToGallery()">
         <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="selectImage()">
+        <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -12,7 +16,6 @@
 
 <ion-content overflow-scroll="true">
   <div class="container">
-
     <h3 *ngIf="images.length == 0" class="ion-padding ion-text-center">
       Falta imágen
     </h3>

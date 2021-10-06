@@ -114,6 +114,19 @@ export class MotoFormlyComponent implements OnInit {
     }
 }
 
+public async addNewToGallery() {
+  // Take a photo
+  const capturedPhoto = await Camera.getPhoto({
+    resultType: CameraResultType.Uri,
+    source: CameraSource.Camera,
+    quality: 100
+  });
+
+  if (capturedPhoto) {
+    this.saveImage(capturedPhoto)
+}
+}
+
 // Create a new file from a capture image
 async saveImage(photo: Photo) {
   const base64Data = await this.readAsBase64(photo);
