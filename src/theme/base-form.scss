@@ -29,4 +29,15 @@ select.form-control[multiple] {
   position: absolute;
   white-space: nowrap;
   width: 100px;
+  margin-top: -0.1rem;
+  font-size: 12px;
+}
+
+.custom-control-label {
+  font-size: 16px !important;
+  font-weight: 500;
+}
+
+.custom-radio {
+  height: 35px;
 }

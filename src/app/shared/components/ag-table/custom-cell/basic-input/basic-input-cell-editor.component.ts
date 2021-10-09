@@ -4,7 +4,7 @@ import { IBasicInputCellEditorParams } from './models';
 
 @Component({
   selector: 'app-basic-input',
-  template: `<input type="text" [(ngModel)]="value"/>`,
+  template: `<ion-input type="text" [(ngModel)]="value"></ion-input>`,
   styles: []
 })
 export class BasicInputCellEditorComponent implements ICellEditorAngularComp {

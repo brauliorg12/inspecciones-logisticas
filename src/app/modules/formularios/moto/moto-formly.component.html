@@ -16,34 +16,51 @@
 
 <ion-content overflow-scroll="true" color="light" fullscreen="true">
   <div class="container">
-    <h3 *ngIf="images.length == 0" class="ion-padding ion-text-center">
-      Falta imágen
-    </h3>
+    <br />
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title
+          ><ion-text *ngIf="images.length == 0" color="danger"
+            >Falta imágen *</ion-text
+          >
+          <ion-text *ngIf="images.length > 0" color="success"
+            >Imágen cargada</ion-text
+          >
+        </mat-panel-title>
 
-    <ion-item
-      *ngFor="let file of images; let i = index"
-      color="light"
-      lines="none"
-    >
-      <ion-thumbnail slot="start">
-        <ion-img [src]="file.data"></ion-img>
-      </ion-thumbnail>
-      <ion-label class="ion-text-wrap">
-        {{ file.name }}
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-button fill="clear" (click)="startUpload(file)">
-          <ion-icon
-            slot="icon-only"
-            name="cloud-upload"
-            color="danger"
-          ></ion-icon>
-        </ion-button>
-        <ion-button fill="clear" (click)="deleteImage(file)">
-          <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
+        <!-- <mat-panel-description>
+          Inform the date you wish to travel
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+
+      <ion-card>
+        <ion-item
+          *ngFor="let file of images; let i = index"
+          color="light"
+          lines="none"
+        >
+          <ion-thumbnail slot="start">
+            <ion-img [src]="file.data"></ion-img>
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            {{ file.name }}
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="startUpload(file)">
+              <ion-icon
+                slot="icon-only"
+                name="cloud-upload"
+                color="danger"
+              ></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" (click)="deleteImage(file)">
+              <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-card>
+    </mat-expansion-panel>
   </div>
 
   <div class="row p-3">
@@ -90,16 +107,11 @@
   <!-- </div> -->
 </ion-content>
 
-<!-- <ion-footer>
+<ion-footer *ngIf="tabsForms">
   <ion-toolbar color="primary">
-    <ion-button
-      fill="clear"
-      expand="full"
-      color="light"
-      (click)="selectImage()"
-    >
-      <ion-icon slot="start" name="camera"></ion-icon>
-      Select Image
+    <ion-button fill="clear" expand="full" color="light" type="submit" (click)="submitFn()">
+      <ion-icon slot="start" name="save-sharp"></ion-icon>
+      <ion-text>Guardar</ion-text> 
     </ion-button>
   </ion-toolbar>
-</ion-footer> -->
+</ion-footer>

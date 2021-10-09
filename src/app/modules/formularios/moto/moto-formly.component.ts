@@ -38,8 +38,6 @@ export class MotoFormlyComponent implements OnInit {
 
   images: LocalFile[] = [];
 
-  public leo = false;
-
   constructor(
     private plt: Platform,
     private http: HttpClient,
@@ -48,9 +46,17 @@ export class MotoFormlyComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.tabsForms.submit = (model) =>
-      console.log('Submit TabsForm >> ', model);
     this.loadFiles();
+  }
+
+  submitFn(): void {
+    this.tabsForms.fields[0].form.markAllAsTouched();
+
+    if (!this.tabsForms.fields[0].form.valid) {
+      this.presentToast('Falta completar!');
+    } else {
+      console.log('Submit TabsForm >> ', this.tabsForms.fields[0]);
+    }
   }
 
   // Get the actual base64 data of an image
@@ -73,7 +79,7 @@ export class MotoFormlyComponent implements OnInit {
   }
 
   // Little helper
-  async presentToast(text) {
+  async presentToast(text: string) {
     const toast = await this.toastCtrl.create({
       message: text,
       // position: 'middle',

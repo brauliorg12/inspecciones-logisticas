@@ -53,8 +53,8 @@
       header-background-color: $azul-700,
       header-foreground-color: white,
       secondary-foreground-color: white,
-           // use theme parameters
-           // Default border for cells. This can be used to specify the border-style and border-color properties e.g. `dashed red` but the border-width i
+           // use theme
+           // Default border for cells. This can be used to specify the border-style and border-color properties e.g. `dashed red` but the bord
       cell-horizontal-border: solid ag-derived(secondary-border-color),
     )
   );
@@ -82,6 +82,14 @@
     // line-height: 28px;
     padding-left: 11px;
     padding-right: 11px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  input {
+    color: black !important;
   }
   // .ag-row {
   //   height: 35px;
@@ -95,8 +103,8 @@ body.dark {
       header-background-color: var(--ion-color-primary),
       header-foreground-color: rgb(149, 149, 149),
       secondary-foreground-color: rgb(189, 189, 189),
-           // use theme parameters
-           // Default border for cells. This can be used to specify the border-style and border-color properties e.g. `dashed red` but the border-width i
+           // use theme
+           // Default border for cells. This can be used to specify the border-style and border-color properties e.g. `dashed red` but the bord
       cell-horizontal-border: solid ag-derived(secondary-border-color),
     )
   );
@@ -162,7 +170,8 @@ app-dropdown-cell-renderer {
 }
 
 .ng-option-label {
-  font-size: 18px !important;
+  font-size: 14px !important;
+  font-weight: bold;
   padding-top: 5px !important;
   display: block !important;
 }
