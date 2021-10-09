@@ -1,38 +1,41 @@
 form {
+  display: flex;
+  &.bottom {
+    flex-direction: column;
+  }
+  &.right {
+    align-items: center;
+  }
+  .form-container {
+    flex: 3 1;
+  }
+  .button-submit {
+    padding: 0 15px;
     display: flex;
-    &.bottom {
-        flex-direction: column;
-    }
-    &.right {
-        align-items: center;
-    }
-    .form-container {
-        flex: 3 1;
-    }
-    .button-submit {
-        padding: 0 15px;
-        display: flex;
-        align-items: flex-end;
-        flex: 1 1;
-    }
+    align-items: flex-end;
+    flex: 1 1;
+  }
 }
-:host ::ng-deep  {
-    .subtitle-container {
-        font-size: 1rem;
-        border-bottom: 1px solid;
-        position: relative;
-        display: block;
-        padding-bottom: 5px;
-        margin-bottom: 10px;
-        font-weight: 600;
-        color: #212121;
+:host ::ng-deep {
+  .subtitle-container {
+    font-size: 1rem;
+    border-bottom: 1px solid;
+    position: relative;
+    display: block;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #212121;
+  }
+  .label {
+    font-size: 0.9rem;
+    p {
+      margin-bottom: 5px;
     }
-    .label {
-        font-size: .9rem;
-        p {
-            margin-bottom: 5px;
-        }
-    }
+  }
+  formly-field {
+    width: 100%;
+  }
 }
 
 .align-items-inherit {

@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/formulario',
+    redirectTo: '/tabs/formulario/moto',
     pathMatch: 'full'
   }
 ];

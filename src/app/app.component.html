@@ -1,3 +1,9 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+
+  <!-- -------------------------------  DARK MODE  ------------------------------------------- -->
+  <div (click)="changeTheme()">
+    <ion-icon *ngIf="darkmode" name="moon"></ion-icon>
+    <ion-icon *ngIf="!darkmode" name="sunny"></ion-icon>
+  </div>
 </ion-app>

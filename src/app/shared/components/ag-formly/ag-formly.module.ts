@@ -38,6 +38,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { PhoneInputDefaulOptions } from './custom-inputs/phone-input/phone-input-default-options.model';
 import { MatInputModule } from '@angular/material/input';
 import { FormlyMaterialModule } from '@ngx-formly/material';
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { validations } from './validations/validations.model';
 import { validationMessages } from './validations/validation-messages.model';
 
@@ -64,7 +65,8 @@ import { validationMessages } from './validations/validation-messages.model';
     ButtonModule,
     ReactiveFormsModule,
     NgSelectModule,
-    FormlyMaterialModule,
+    FormlyBootstrapModule,
+    // FormlyMaterialModule,
     MatButtonModule,
     MatIconModule,
     MatChipsModule,

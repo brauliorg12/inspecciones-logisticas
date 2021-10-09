@@ -27,11 +27,13 @@
 
 /* BOOTSTRAP */
 // @import "~bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 /* NG-SELECT */
-@import "~@ng-select/ng-select/themes/material.theme.css";
+// @import "~@ng-select/ng-select/themes/material.theme.css";
 
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+// @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss";
 @import "theme/base-form.scss";
 @import "theme/buttons.scss";
@@ -39,7 +41,7 @@
 @import "theme/material-overrides.scss";
 @import "theme/variables.scss";
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 // body {
 //   margin: 0;
 //   font-family: "PT Sans", sans-serif;
@@ -51,6 +53,9 @@
       header-background-color: $azul-700,
       header-foreground-color: white,
       secondary-foreground-color: white,
+           // use theme parameters
+           // Default border for cells. This can be used to specify the border-style and border-color properties e.g. `dashed red` but the border-width i
+      cell-horizontal-border: solid ag-derived(secondary-border-color),
     )
   );
   .ag-paging-panel,
@@ -73,15 +78,30 @@
     padding-left: 11px;
     padding-right: 11px;
   }
-  // .ag-cell {
-  //   line-height: 28px;
-  //   padding-left: 11px;
-  //   padding-right: 11px;
-  // }
+  .ag-cell {
+    // line-height: 28px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
   // .ag-row {
   //   height: 35px;
   // }
 }
+
+/* DARK MODE */
+body.dark {
+  @include ag-theme-alpine(
+    (
+      header-background-color: var(--ion-color-primary),
+      header-foreground-color: rgb(149, 149, 149),
+      secondary-foreground-color: rgb(189, 189, 189),
+           // use theme parameters
+           // Default border for cells. This can be used to specify the border-style and border-color properties e.g. `dashed red` but the border-width i
+      cell-horizontal-border: solid ag-derived(secondary-border-color),
+    )
+  );
+}
+
 .col-1-5 {
   flex: 0 0 12.3%;
   max-width: 12.3%;
@@ -97,7 +117,8 @@
 }
 
 app-dropdown-cell-renderer {
-  text-decoration: underline;
+  font-weight: 700;
+  // text-decoration: underline;
   cursor: pointer;
 }
 
@@ -133,4 +154,15 @@ app-dropdown-cell-renderer {
   app-button {
     display: none !important;
   }
+}
+
+.ng-select.ng-select-single .ng-select-container,
+.ng-option {
+  height: 48px !important;
+}
+
+.ng-option-label {
+  font-size: 18px !important;
+  padding-top: 5px !important;
+  display: block !important;
 }

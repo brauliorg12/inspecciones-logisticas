@@ -13,9 +13,9 @@ const setDefault = () => {
 
 export const getEstados = (): any => {
   const result: any[] = [
-    { id: 1, value: 'Bueno' },
-    { id: 2, value: 'Regular' },
-    { id: 3, value: 'Malo' },
+    { id: 1, value: 'BUENO' },
+    { id: 2, value: 'REGULAR' },
+    { id: 3, value: 'MALO' },
   ];
   return result;
 };
@@ -218,6 +218,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
           className: 'col-4',
           type: 'input',
           templateOptions: {
+            type: 'number',
             label: 'AÑO',
           },
         },
@@ -265,7 +266,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
           key: 'resultados',
           wrappers: ['nested-form'],
           templateOptions: {
-            label: 'Resultados Formulario',
+            // label: 'Resultados Formulario',
             required: false,
             submitText: 'Guardar',
             nestedFormSubmit: (model, field) =>
@@ -284,8 +285,9 @@ export const tabsFormConfig: IAgFormlyConfig = {
                 label: 'Resultados',
                 gridOptions: {
                   rowSelection: 'single',
-                  pagination: true,
-                  paginationPageSize: 5,
+                  // pagination: true,
+                  // paginationPageSize: 10,
+                  // suppressPaginationPanel: true,
                   columnDefs: [
                     {
                       headerName: 'PARTE EXTERNA',
@@ -294,9 +296,10 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       filter: true,
                       flex: 2,
                       field: 'parteExterna',
-                      tooltipField: 'PARTE EXTERNA',
+                      // tooltipField: 'PARTE EXTERNA',
                       autoHeight: true,
-                      minWidth: 200,
+                      minWidth: 210,
+                      maxWidth: 300,
                     },
                     {
                       headerName: 'ESTADO',
@@ -308,7 +311,8 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       sortable: true,
                       flex: 0.7,
                       resizable: true,
-                      minWidth: 200,
+                      minWidth: 120,
+                      maxWidth: 120,
                       cellRendererFramework: DropdownCellRendererComponent,
                       cellEditorFramework: DropdownCellEditorComponent,
                       cellEditorParams: {
@@ -338,6 +342,14 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       autoHeight: true,
                       editable: true,
                       minWidth: 200,
+                      filter: true,
+                      cellEditor: 'agLargeTextCellEditor',
+                      cellEditorParams: {
+                        borders: true,
+                        maxLength: '300',
+                        cols: '50',
+                        rows: '6',
+                      },
                     },
                   ],
                 },

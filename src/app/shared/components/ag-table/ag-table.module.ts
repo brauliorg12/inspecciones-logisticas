@@ -14,6 +14,7 @@ import { DropdownCellRendererComponent } from './custom-cell/dropdown-cell-edito
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
     DropdownCellRendererComponent,
     DropdownCellEditorComponent,
     BasicInputCellEditorComponent,
-    BasicInputCellRendererComponent,
+    BasicInputCellRendererComponent
   ]
 })
 export class AgTableModule { }

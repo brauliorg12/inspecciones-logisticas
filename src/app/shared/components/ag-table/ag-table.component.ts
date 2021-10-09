@@ -44,15 +44,6 @@ export class AgTableComponent implements OnInit {
     dropdownCellEditorComponent: DropdownCellEditorComponent,
   };
 
-  // constructor() {
-  // }
-
-  // style = {
-  //   width: '100%',
-  //   height: '100%',
-  //   flex: '1 1 auto'
-  // };
-
   ngOnInit(): void {
     if (!this.gridOptions.columnDefs) {
       // TODO: Eliminar cuando no haya mas utilizacion de headerColumns
