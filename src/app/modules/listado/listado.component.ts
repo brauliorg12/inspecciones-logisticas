@@ -46,7 +46,7 @@ export class ListadoComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.loadFiles();
+    // this.loadFiles();
   }
 
   submitFn(): void {

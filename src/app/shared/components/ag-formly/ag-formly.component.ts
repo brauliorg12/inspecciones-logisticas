@@ -19,7 +19,6 @@ import {
   IDataOptionDropdown,
 } from './models/ag-formly-config.model';
 
-
 @Component({
   selector: 'app-ag-formly',
   templateUrl: './ag-formly.component.html',
@@ -85,9 +84,11 @@ export class AgFormlyComponent implements OnInit, OnDestroy {
     const dataOptionDropdown = this.options.formState?.dataOptionsDropdown[key];
     const pipes = this.setPipes(dataOptionDropdown);
     if (dataOptionDropdown?.url) {
-      this.getMethod(dataOptionDropdown, pipes)
-        .toPromise()
-        .then((res) => (dataOptionDropdown.options = res));
+      this.getMethod(dataOptionDropdown, pipes).subscribe(
+        (res) => (dataOptionDropdown.options = res)
+      );
+      // .toPromise()
+      // .then((res) => (dataOptionDropdown.options = res));
     }
   }
 

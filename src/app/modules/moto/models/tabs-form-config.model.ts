@@ -2,6 +2,7 @@ import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-c
 import { mockMotosTableModelParteExternaBase } from '@models/motos-table-model';
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
+import { departamentosList } from '../../../models/departamentos-model';
 
 const setDefault = () => {
   // Funcion para limpiar por defecto la tabla
@@ -34,6 +35,11 @@ export const tabsFormConfig: IAgFormlyConfig = {
     resetModelWhenSubmit: true,
 
     dataOptionsDropdown: {
+      // departamentos: {
+      //   url: 'https://infra.datos.gob.ar/catalog/modernizacion/dataset/7/distribution/7.3/download/departamentos.json',
+      //   // url: '../../../../assets/departamentos.json',
+      //   options: []
+      // },
       // Data para dropdown
     },
   },
@@ -119,30 +125,21 @@ export const tabsFormConfig: IAgFormlyConfig = {
           key: 'partidoId',
           type: 'dropdown-input',
           className: 'col-6 mt-1',
+          // expressionProperties: {
+          //   'templateOptions.options':
+          //     '../../../../assets/departamentos.json',
+          // },
           templateOptions: {
             label: 'PARTIDOS',
             searchable: true,
             required: true,
-            options: [
-              {
-                value: 1,
-                label: 'Chacabuco',
-              },
-              {
-                value: 2,
-                label: 'Junin',
-              },
-              {
-                value: 3,
-                label: 'Rawson',
-              },
-            ],
+            options: departamentosList,
             attributes: {
               searchable: 'true',
               multiple: 'true',
               appendTo: 'body',
-              bindValueOp: 'value',
-              bindLabelOp: 'label',
+              bindValueOp: 'nombre',
+              bindLabelOp: 'nombre',
             },
           },
         },
@@ -404,7 +401,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
                         debounceMs: 400,
                       },
                       autoHeight: true,
-                      minWidth: 230,
+                      minWidth: 220,
                       maxWidth: 300,
                     },
                     {

@@ -2,6 +2,7 @@ import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-c
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
 import { mockAutoCamionetaTableModelParteExternaBase } from '@models/auto-camioneta-table-model';
+import { departamentosList } from '../../../models/departamentos-model';
 
 const setDefault = () => {
   // Funcion para limpiar por defecto la tabla
@@ -47,7 +48,8 @@ export const tabsFormConfig: IAgFormlyConfig = {
           // type: 'radio',
           className: 'col-12',
           expressionProperties: {
-            template: () => `<h3><strong>MOVIL R.O./O.I.:</strong> Auto / Camioneta </h3>`,
+            template: () =>
+              `<h3><strong>MOVIL R.O./O.I.:</strong> Auto / Camioneta </h3>`,
           },
           // templateOptions: {
           //   label: 'MOVIL R.O./O.I.',
@@ -114,6 +116,57 @@ export const tabsFormConfig: IAgFormlyConfig = {
         //     ],
         //   },
         // },
+
+        {
+          key: 'partidoId',
+          type: 'dropdown-input',
+          className: 'col-6 mt-1',
+          templateOptions: {
+            label: 'PARTIDOS',
+            searchable: true,
+            required: true,
+            options: departamentosList,
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'nombre',
+              bindLabelOp: 'nombre',
+            },
+          },
+        },
+
+        {
+          key: 'comizariaId',
+          type: 'dropdown-input',
+          className: 'col-6 mt-1',
+          templateOptions: {
+            label: 'COMIZARÍA',
+            required: true,
+            searchable: true,
+            options: [
+              {
+                value: 1,
+                label: '1',
+              },
+              {
+                value: 2,
+                label: '2',
+              },
+              {
+                value: 3,
+                label: '3',
+              },
+            ],
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'value',
+              bindLabelOp: 'label',
+            },
+          },
+        },
 
         {
           key: 'estadoGeneralId',
@@ -329,7 +382,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       resizable: true,
                       suppressMovable: true,
                       sortable: true,
-                      
+
                       flex: 2,
                       field: 'parteExterna',
                       tooltipField: 'PARTE EXTERNA',
@@ -340,7 +393,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
                         debounceMs: 400,
                       },
                       autoHeight: true,
-                      minWidth: 230,
+                      minWidth: 205,
                       maxWidth: 300,
                     },
                     {
