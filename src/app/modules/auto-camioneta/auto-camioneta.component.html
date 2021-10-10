@@ -1,20 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Moto </ion-title>
+    <ion-title> Auto / Camioneta </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="addNewToGallery()">
+      <ion-button
+        *ngIf="images.length == 0"
+        color="primary"
+        (click)="addNewToGallery()"
+      >
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
 
-      <ion-button (click)="selectImage()">
+      <ion-button color="success" *ngIf="images.length > 0">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="selectImage()" color="primary">
         <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content overflow-scroll="true" color="light" fullscreen="true">
+<ion-content overflow-scroll="true" color="light">
   <div class="container">
     <br />
     <mat-expansion-panel>
@@ -108,10 +116,10 @@
 </ion-content>
 
 <ion-footer *ngIf="tabsForms">
-  <ion-toolbar color="primary">
-    <ion-button fill="clear" expand="full" color="light" type="submit" (click)="submitFn()">
+  <ion-toolbar>
+    <ion-button fill="clear" expand="full" type="submit" (click)="submitFn()">
       <ion-icon slot="start" name="save-sharp"></ion-icon>
-      <ion-text>Guardar</ion-text> 
+      <ion-text>Guardar</ion-text>
     </ion-button>
   </ion-toolbar>
 </ion-footer>

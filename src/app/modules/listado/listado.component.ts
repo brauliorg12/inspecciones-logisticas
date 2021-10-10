@@ -25,11 +25,11 @@ interface LocalFile {
 }
 
 @Component({
-  selector: 'app-moto-formly',
-  templateUrl: './moto-formly.component.html',
-  styleUrls: ['./moto-formly.component.scss'],
+  selector: 'app-listado',
+  templateUrl: './listado.component.html',
+  styleUrls: ['./listado.component.scss'],
 })
-export class MotoFormlyComponent implements OnInit {
+export class ListadoComponent implements OnInit {
   formRepeatSection: IAgFormlyConfig = new RepeatingSectionConfig();
   formAgFormlyGrid: IAgFormlyConfig = new AgGridFormlyConfig();
   formDropdownInput: IAgFormlyConfig = dropdownInputConfigFormData;

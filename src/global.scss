@@ -31,10 +31,10 @@
 
 /* NG-SELECT */
 // @import "~@ng-select/ng-select/themes/material.theme.css";
-
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
 // @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/_ag-theme-alpine-mixin.scss";
+
 @import "theme/base-form.scss";
 @import "theme/buttons.scss";
 @import "theme/expediente-common.scss";
@@ -42,15 +42,14 @@
 @import "theme/variables.scss";
 /* You can add global styles to this file, and also import other style files */
 // @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
-// body {
-//   margin: 0;
-//   font-family: "PT Sans", sans-serif;
-// }
+body { 
+  margin: 0;
+}
 
 .ag-theme-alpine {
   @include ag-theme-alpine(
     (
-      header-background-color: $azul-700,
+      header-background-color: $azul,
       header-foreground-color: white,
       secondary-foreground-color: white,
            // use theme
@@ -98,6 +97,7 @@
 
 /* DARK MODE */
 body.dark {
+
   @include ag-theme-alpine(
     (
       header-background-color: var(--ion-color-primary),

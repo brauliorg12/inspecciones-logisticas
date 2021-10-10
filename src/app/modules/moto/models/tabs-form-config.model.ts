@@ -1,6 +1,5 @@
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
-import { NestedFormTemplateOptions } from '@shared/components/ag-formly/custom-inputs/nested-form-wrapper/models/nested-form-template-options';
-import { mockMotosTableModelParteExternaBase } from '../../../../models/motos-table-model';
+import { mockMotosTableModelParteExternaBase } from '@models/motos-table-model';
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
 
@@ -405,6 +404,15 @@ export const tabsFormConfig: IAgFormlyConfig = {
               },
             },
           ],
+        },
+        {
+          key: 'observacionesGlobal',
+          className: 'col-12',
+          type: 'textarea',
+          templateOptions: {
+            label: 'OBSERVACIONES',
+            rows: 4,
+          },
         },
       ],
     },

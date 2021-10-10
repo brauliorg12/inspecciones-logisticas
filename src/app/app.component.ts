@@ -75,8 +75,8 @@ export class AppComponent {
       .then((resp) => {
         if (resp) {
           if (
-            this.router.url === '/tabs/formulario/moto' ||
-            this.router.url === '/tabs/demo/formly'
+            this.router.url === '/tabs/formularioMoto/moto' ||
+            this.router.url === '/tabs/formularioAutoCamioneta/auto-camioneta'
           ) {
             (navigator as any).app.exitApp();
           } else {

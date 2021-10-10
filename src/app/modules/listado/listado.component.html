@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Listado </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button color="success" *ngIf="tabsForms.fields.length > 0">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll="true" color="light">
+  <div class="row m-0">
+    <div class="col-12">
+      <app-ag-formly class="form-create" [formData]="tabsForms"></app-ag-formly>
+    </div>
+  </div>
+</ion-content>

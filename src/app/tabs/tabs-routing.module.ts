@@ -8,14 +8,19 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'formulario',
+        path: 'listado',
         loadChildren: () =>
-          import('../modules/formularios/formularios.module').then((m) => m.FormulariosModule),
+          import('../modules/listado/listado.module').then((m) => m.FormulariosListadoModule),
       },
       {
-        path: 'demo',
+        path: 'formularioMoto',
         loadChildren: () =>
-          import('../modules/demo/demo.module').then((m) => m.DemoModule),
+          import('../modules/moto/moto.module').then((m) => m.FormulariosMotoModule),
+      },
+      {
+        path: 'formularioAutoCamioneta',
+        loadChildren: () =>
+          import('../modules/auto-camioneta/auto-camioneta.module').then((m) => m.FormulariosAutoCamionetaModule),
       },
       {
         path: '',
@@ -26,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/formulario/moto',
+    redirectTo: '/tabs/listado',
     pathMatch: 'full'
   }
 ];

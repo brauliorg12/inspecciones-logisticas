@@ -1,21 +1,20 @@
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
-import { NestedFormTemplateOptions } from '@shared/components/ag-formly/custom-inputs/nested-form-wrapper/models/nested-form-template-options';
-import { mockMotosTableModelParteExternaBase } from '../../../../models/motos-table-model';
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
+import { mockAutoCamionetaTableModelParteExternaBase } from '@models/auto-camioneta-table-model';
 
 const setDefault = () => {
   // Funcion para limpiar por defecto la tabla
-  console.log(mockMotosTableModelParteExternaBase);
+  /// console.log(mockMotosTableModelParteExternaBase);
 
-  return mockMotosTableModelParteExternaBase;
+  return mockAutoCamionetaTableModelParteExternaBase;
 };
 
 export const getEstados = (): any => {
   const result: any[] = [
-    { id: 1, value: 'M' },
-    { id: 2, value: 'R' },
-    { id: 2, value: 'B' },
+    { id: 1, value: 'BUENO' },
+    { id: 2, value: 'REGULAR' },
+    { id: 3, value: 'MALO' },
   ];
   return result;
 };
@@ -25,6 +24,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
   //   text: 'Guardar',
   //   position: 'bottom',
   // },
+  submit: (model) => model,
   model: {
     resultados: {
       datosTabla: setDefault(),
@@ -43,82 +43,85 @@ export const tabsFormConfig: IAgFormlyConfig = {
       fieldGroup: [
         // Simple texto y requerido
         {
-          key: 'movilRoId',
-          type: 'radio',
-          className: 'col-6',
-          templateOptions: {
-            label: 'MOVIL R.O./O.I.',
-            required: false,
-            options: [
-              {
-                value: 1,
-                label: 'Auto/Camioneta',
-              },
-              {
-                value: 2,
-                label: 'Moto',
-              },
-            ],
+          // key: 'movilRoId',
+          // type: 'radio',
+          className: 'col-12',
+          expressionProperties: {
+            template: () => `<h3><strong>MOVIL R.O./O.I.:</strong> Auto / Camioneta </h3>`,
           },
+          // templateOptions: {
+          //   label: 'MOVIL R.O./O.I.',
+          //   required: false,
+          //   options: [
+          //     {
+          //       value: 1,
+          //       label: 'Auto/Camioneta',
+          //     },
+          //     {
+          //       value: 2,
+          //       label: 'Moto',
+          //     },
+          //   ],
+          // },
         },
-        {
-          key: 'movilRoId',
-          type: 'dropdown-input',
-          className: 'col-6',
-          templateOptions: {
-            label: 'MOVIL R.O./O.I.',
-            required: false,
-            options: [
-              {
-                value: 1,
-                label: 'Auto/Camioneta',
-              },
-              {
-                value: 2,
-                label: 'Moto',
-              },
-            ],
-            attributes: {
-              searchable: 'true',
-              multiple: 'true',
-              // appendTo: 'body',
-              bindValueOp: 'value',
-              bindLabelOp: 'label',
-            },
-          },
-        },
+        // {
+        //   key: 'movilRoId',
+        //   type: 'dropdown-input',
+        //   className: 'col-6',
+        //   templateOptions: {
+        //     label: 'MOVIL R.O./O.I.',
+        //     required: false,
+        //     options: [
+        //       {
+        //         value: 1,
+        //         label: 'Auto/Camioneta',
+        //       },
+        //       {
+        //         value: 2,
+        //         label: 'Moto',
+        //       },
+        //     ],
+        //     attributes: {
+        //       searchable: 'true',
+        //       multiple: 'true',
+        //       // appendTo: 'body',
+        //       bindValueOp: 'value',
+        //       bindLabelOp: 'label',
+        //     },
+        //   },
+        // },
+
+        // {
+        //   key: 'estadoGeneralId',
+        //   type: 'radio',
+        //   className: 'col-6',
+        //   templateOptions: {
+        //     label: 'ESTADO',
+        //     required: true,
+        //     options: [
+        //       {
+        //         value: 1,
+        //         label: 'Servicio',
+        //       },
+        //       {
+        //         value: 2,
+        //         label: 'Radicado',
+        //       },
+        //       {
+        //         value: 3,
+        //         label: 'Irrecuperable',
+        //       },
+        //     ],
+        //   },
+        // },
 
         {
           key: 'estadoGeneralId',
-          type: 'radio',
-          className: 'col-6',
-          templateOptions: {
-            label: 'ESTADO',
-            required: false,
-            options: [
-              {
-                value: 1,
-                label: 'Servicio',
-              },
-              {
-                value: 2,
-                label: 'Radicado',
-              },
-              {
-                value: 3,
-                label: 'Irrecuperable',
-              },
-            ],
-          },
-        },
-
-        {
-          key: 'estadoGeneralId',
           type: 'dropdown-input',
           className: 'col-6',
           templateOptions: {
             label: 'ESTADO',
-            required: false,
+            required: true,
             options: [
               {
                 value: 1,
@@ -145,10 +148,11 @@ export const tabsFormConfig: IAgFormlyConfig = {
 
         {
           key: 'ministerioId',
-          type: 'radio',
+          type: 'dropdown-input',
           className: 'col-6',
           templateOptions: {
-            required: false,
+            label: 'TIPO',
+            required: true,
             options: [
               {
                 value: 1,
@@ -159,45 +163,56 @@ export const tabsFormConfig: IAgFormlyConfig = {
                 label: 'COMODATO',
               },
               {
-                value: 2,
+                value: 3,
                 label: 'FORTALECIMIENTO',
               },
             ],
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'value',
+              bindLabelOp: 'label',
+            },
           },
         },
+
+        // {
+        //   key: 'ministerioId',
+        //   type: 'radio',
+        //   className: 'col-12',
+        //   templateOptions: {
+        //     required: false,
+        //     options: [
+        //       {
+        //         value: 1,
+        //         label: '  MINISTERIO',
+        //       },
+        //       {
+        //         value: 2,
+        //         label: 'COMODATO',
+        //       },
+        //       {
+        //         value: 3,
+        //         label: 'FORTALECIMIENTO',
+        //       },
+        //     ],
+        //   },
+        // },
 
         {
           key: 'dependencia',
-          className: 'col-6',
-          type: 'input',
+          className: 'col-12',
+          type: 'textarea',
           templateOptions: {
             label: 'DEPENDENCIA',
-          },
-        },
-
-        {
-          key: 'avlId',
-          type: 'radio',
-          className: 'col-6',
-          templateOptions: {
-            label: 'AVL',
-            required: false,
-            options: [
-              {
-                value: 1,
-                label: 'SI',
-              },
-              {
-                value: 2,
-                label: 'NO',
-              },
-            ],
+            rows: 1,
           },
         },
 
         {
           key: 'marca',
-          className: 'col-4',
+          className: 'col-6',
           type: 'input',
           templateOptions: {
             label: 'MARCA',
@@ -206,7 +221,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
 
         {
           key: 'modelo',
-          className: 'col-4',
+          className: 'col-6',
           type: 'input',
           templateOptions: {
             label: 'MODELO',
@@ -218,6 +233,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
           className: 'col-4',
           type: 'input',
           templateOptions: {
+            type: 'number',
             label: 'AÑO',
           },
         },
@@ -242,9 +258,29 @@ export const tabsFormConfig: IAgFormlyConfig = {
         },
 
         {
+          key: 'avlId',
+          type: 'radio',
+          className: 'col-3',
+          templateOptions: {
+            label: 'AVL',
+            required: false,
+            options: [
+              {
+                value: 1,
+                label: 'SI',
+              },
+              {
+                value: 2,
+                label: 'NO',
+              },
+            ],
+          },
+        },
+
+        {
           key: 'tipoId',
           type: 'radio',
-          className: 'col-6',
+          className: 'col-3',
           templateOptions: {
             label: 'TIPO',
             required: false,
@@ -263,14 +299,14 @@ export const tabsFormConfig: IAgFormlyConfig = {
         // Tabla
         {
           key: 'resultados',
-          wrappers: ['nested-form'],
-          templateOptions: {
-            label: 'Resultados Formulario',
-            required: false,
-            submitText: 'Guardar',
-            nestedFormSubmit: (model, field) =>
-              (field.parent.model.resultados.datosTabla = setDefault()),
-          } as NestedFormTemplateOptions,
+          // wrappers: ['nested-form'],
+          // templateOptions: {
+          //   // label: 'Resultados Formulario',
+          //   required: false,
+          //   submitText: 'Guardar',
+          //   nestedFormSubmit: (model, field) =>
+          //     (field.parent.model.resultados.datosTabla = setDefault()),
+          // } as NestedFormTemplateOptions,
           fieldGroupClassName: 'row',
           fieldGroup: [
             // Ag Grid
@@ -284,19 +320,28 @@ export const tabsFormConfig: IAgFormlyConfig = {
                 label: 'Resultados',
                 gridOptions: {
                   rowSelection: 'single',
-                  pagination: true,
-                  paginationPageSize: 5,
+                  // pagination: true,
+                  // paginationPageSize: 10,
+                  // suppressPaginationPanel: true,
                   columnDefs: [
                     {
                       headerName: 'PARTE EXTERNA',
                       resizable: true,
+                      suppressMovable: true,
                       sortable: true,
-                      filter: true,
+                      
                       flex: 2,
                       field: 'parteExterna',
                       tooltipField: 'PARTE EXTERNA',
+
+                      filter: true,
+                      floatingFilter: true,
+                      filterParams: {
+                        debounceMs: 400,
+                      },
                       autoHeight: true,
-                      minWidth: 200,
+                      minWidth: 230,
+                      maxWidth: 300,
                     },
                     {
                       headerName: 'ESTADO',
@@ -308,7 +353,9 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       sortable: true,
                       flex: 0.7,
                       resizable: true,
-                      minWidth: 200,
+                      suppressMovable: true,
+                      minWidth: 120,
+                      maxWidth: 120,
                       cellRendererFramework: DropdownCellRendererComponent,
                       cellEditorFramework: DropdownCellEditorComponent,
                       cellEditorParams: {
@@ -336,14 +383,36 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       flex: 1,
                       resizable: true,
                       autoHeight: true,
+                      suppressMovable: true,
                       editable: true,
                       minWidth: 200,
+                      filter: true,
+                      floatingFilter: true,
+                      filterParams: {
+                        debounceMs: 400,
+                      },
+                      cellEditor: 'agLargeTextCellEditor',
+                      cellEditorParams: {
+                        borders: true,
+                        maxLength: '300',
+                        cols: '50',
+                        rows: '6',
+                      },
                     },
                   ],
                 },
               },
             },
           ],
+        },
+        {
+          key: 'observacionesGlobal',
+          className: 'col-12',
+          type: 'textarea',
+          templateOptions: {
+            label: 'OBSERVACIONES',
+            rows: 4,
+          },
         },
       ],
     },
