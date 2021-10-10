@@ -76,7 +76,9 @@ export class AppComponent {
         if (resp) {
           if (
             this.router.url === '/tabs/formularioMoto/moto' ||
-            this.router.url === '/tabs/formularioAutoCamioneta/auto-camioneta'
+            this.router.url ===
+              '/tabs/formularioAutoCamioneta/auto-camioneta' ||
+            this.router.url === '/tabs/listadoPlanillas/listado'
           ) {
             (navigator as any).app.exitApp();
           } else {

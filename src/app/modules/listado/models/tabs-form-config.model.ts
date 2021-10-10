@@ -71,56 +71,34 @@ export const tabsFormConfig: IAgFormlyConfig = {
                   columnDefs: [
                     {
                       headerName: 'PARTIDOS',
+                      field: 'partidos',
+                      flex: 1,
                       resizable: true,
+                      autoHeight: true,
                       suppressMovable: true,
-                      sortable: true,
-                      
-                      flex: 2,
-                      field: 'parteExterna',
-                      tooltipField: 'PARTE EXTERNA',
-
+                      editable: true,
+                      minWidth: 200,
                       filter: true,
                       floatingFilter: true,
                       filterParams: {
                         debounceMs: 400,
                       },
-                      autoHeight: true,
-                      minWidth: 230,
-                      maxWidth: 300,
                     },
+
                     {
                       headerName: 'N° MOVIL',
-                      field: 'estadoTable',
-                      cellStyle: { textAlign: 'center', position: 'relative' },
-                      editable: true,
-                      singleClickEdit: true,
-                      filter: false,
-                      sortable: true,
-                      flex: 0.7,
+                      field: 'nroMovil',
+                      flex: 1,
                       resizable: true,
+                      autoHeight: true,
                       suppressMovable: true,
-                      minWidth: 120,
-                      maxWidth: 120,
-                      cellRendererFramework: DropdownCellRendererComponent,
-                      cellEditorFramework: DropdownCellEditorComponent,
-                      cellEditorParams: {
-                        values: getEstados(),
-                        bindLabelOp: 'value',
-                        bindValueOp: 'value',
-                        gridDropdownChange: (params: any) => {
-                          const row: any = params.data;
-                          console.log(row);
-                        },
+                      editable: true,
+                      minWidth: 130,
+                      filter: true,
+                      floatingFilter: true,
+                      filterParams: {
+                        debounceMs: 400,
                       },
-                      // valueGetter: (params) => {
-                      //   if (params.data.habilitacion) {
-                      //     params.data.value = 'Si';
-                      //     return 'Si';
-                      //   } else {
-                      //     params.data.value = 'No';
-                      //     return 'No';
-                      //   }
-                      // },
                     },
                     {
                       headerName: 'R.O./O.I.',
@@ -135,13 +113,6 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       floatingFilter: true,
                       filterParams: {
                         debounceMs: 400,
-                      },
-                      cellEditor: 'agLargeTextCellEditor',
-                      cellEditorParams: {
-                        borders: true,
-                        maxLength: '300',
-                        cols: '50',
-                        rows: '6',
                       },
                     },
                   ],

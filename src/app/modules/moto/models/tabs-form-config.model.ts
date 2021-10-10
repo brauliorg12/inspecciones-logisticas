@@ -116,9 +116,73 @@ export const tabsFormConfig: IAgFormlyConfig = {
         // },
 
         {
+          key: 'partidoId',
+          type: 'dropdown-input',
+          className: 'col-6 mt-1',
+          templateOptions: {
+            label: 'PARTIDOS',
+            searchable: true,
+            required: true,
+            options: [
+              {
+                value: 1,
+                label: 'Chacabuco',
+              },
+              {
+                value: 2,
+                label: 'Junin',
+              },
+              {
+                value: 3,
+                label: 'Rawson',
+              },
+            ],
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'value',
+              bindLabelOp: 'label',
+            },
+          },
+        },
+
+        {
+          key: 'comizariaId',
+          type: 'dropdown-input',
+          className: 'col-6 mt-1',
+          templateOptions: {
+            label: 'COMIZARÍA',
+            required: true,
+            searchable: true,
+            options: [
+              {
+                value: 1,
+                label: '1',
+              },
+              {
+                value: 2,
+                label: '2',
+              },
+              {
+                value: 3,
+                label: '3',
+              },
+            ],
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'value',
+              bindLabelOp: 'label',
+            },
+          },
+        },
+
+        {
           key: 'estadoGeneralId',
           type: 'dropdown-input',
-          className: 'col-6',
+          className: 'col-6 mt-1',
           templateOptions: {
             label: 'ESTADO',
             required: true,
@@ -149,7 +213,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
         {
           key: 'ministerioId',
           type: 'dropdown-input',
-          className: 'col-6',
+          className: 'col-6 mt-1',
           templateOptions: {
             label: 'TIPO',
             required: true,
@@ -202,7 +266,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
 
         {
           key: 'dependencia',
-          className: 'col-12',
+          className: 'col-12 mt-1',
           type: 'textarea',
           templateOptions: {
             label: 'DEPENDENCIA',
@@ -329,7 +393,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
                       resizable: true,
                       suppressMovable: true,
                       sortable: true,
-                      
+
                       flex: 2,
                       field: 'parteExterna',
                       tooltipField: 'PARTE EXTERNA',

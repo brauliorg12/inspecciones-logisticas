@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListadoComponent } from './listado.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'listado', pathMatch: 'full' },
+  { path: '', redirectTo: 'listadoPlanillas', pathMatch: 'full' },
   {
     path: 'listado',
     children: [{ path: '', component: ListadoComponent }],

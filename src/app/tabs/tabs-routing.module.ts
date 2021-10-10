@@ -8,7 +8,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'listado',
+        path: 'listadoPlanillas',
         loadChildren: () =>
           import('../modules/listado/listado.module').then((m) => m.FormulariosListadoModule),
       },
@@ -24,14 +24,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/formulario',
+        redirectTo: '/tabs/listadoPlanillas/listado',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/listado',
+    redirectTo: '/tabs/listadoPlanillas/listado',
     pathMatch: 'full'
   }
 ];
