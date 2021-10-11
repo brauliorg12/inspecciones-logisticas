@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Moto &nbsp;
@@ -23,21 +23,48 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content overflow-scroll="true" color="light">
+  <br />
   <div class="container">
     <br />
-    <mat-expansion-panel>
+    <mat-expansion-panel [disabled]="images.length == 0">
       <mat-expansion-panel-header>
-        <mat-panel-title
-          ><ion-text *ngIf="images.length == 0" color="danger"
-            >Falta imágen *</ion-text
-          >
-          <ion-text *ngIf="images.length > 0" color="success"
-            >Imágen cargada</ion-text
-          >
+        <mat-panel-title class="align-items-center">
+          <ion-text *ngIf="images.length == 0" color="danger">
+            Falta imágen *
+          </ion-text>
+          <ion-text *ngIf="images.length > 0" color="success">
+            Imágen cargada
+          </ion-text>
         </mat-panel-title>
+        <mat-panel-description>
+          <ion-buttons slot="end">
+            <ion-button
+              *ngIf="images.length == 0"
+              color="primary"
+              (click)="addNewToGallery()"
+            >
+              <ion-icon slot="icon-only" name="camera"></ion-icon>
+            </ion-button>
+
+            <ion-button
+              *ngIf="images.length == 0"
+              (click)="selectImage()"
+              color="primary"
+            >
+              <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+            </ion-button>
+
+            <!-- <ion-button color="success" *ngIf="images.length > 0">
+              <ion-icon slot="icon-only" name="camera"></ion-icon>
+            </ion-button>
+            <ion-button color="success" *ngIf="images.length > 0">
+              <ion-icon slot="icon-only" name="images"></ion-icon>
+            </ion-button> -->
+          </ion-buttons>
+        </mat-panel-description>
 
         <!-- <mat-panel-description>
           Inform the date you wish to travel
@@ -45,31 +72,31 @@
         </mat-panel-description> -->
       </mat-expansion-panel-header>
 
-      <ion-card>
-        <ion-item
-          *ngFor="let file of images; let i = index"
-          color="light"
-          lines="none"
-        >
-          <ion-thumbnail slot="start">
-            <ion-img [src]="file.data"></ion-img>
-          </ion-thumbnail>
+      <ion-card class="m-0">
+        <ng-container *ngFor="let file of images; let i = index">
+          <ion-img [src]="file.data"></ion-img>
+
           <ion-label class="ion-text-wrap">
-            {{ file.name }}
+            <!-- {{ file.name }} -->
+
+            <ion-buttons slot="end">
+              <!-- <ion-button fill="clear" (click)="startUpload(file)">
+                <ion-icon
+                  slot="icon-only"
+                  name="cloud-upload"
+                  color="danger"
+                ></ion-icon>
+              </ion-button> -->
+              <ion-button fill="clear" (click)="deleteImage(file)">
+                <ion-icon
+                  slot="icon-only"
+                  name="trash"
+                  color="danger"
+                ></ion-icon>
+              </ion-button>
+            </ion-buttons>
           </ion-label>
-          <ion-buttons slot="end">
-            <ion-button fill="clear" (click)="startUpload(file)">
-              <ion-icon
-                slot="icon-only"
-                name="cloud-upload"
-                color="danger"
-              ></ion-icon>
-            </ion-button>
-            <ion-button fill="clear" (click)="deleteImage(file)">
-              <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-item>
+        </ng-container>
       </ion-card>
     </mat-expansion-panel>
   </div>

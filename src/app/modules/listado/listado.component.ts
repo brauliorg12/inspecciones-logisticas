@@ -208,7 +208,7 @@ export class ListadoComponent implements OnInit {
     this.images = [];
 
     const loading = await this.loadingCtrl.create({
-      message: 'Loading data...',
+      message: 'Cargando...',
     });
     await loading.present();
 

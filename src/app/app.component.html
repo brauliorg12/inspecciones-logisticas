@@ -2,8 +2,10 @@
   <ion-router-outlet></ion-router-outlet>
 
   <!-- -------------------------------  DARK MODE  ------------------------------------------- -->
-  <div (click)="changeTheme()">
-    <ion-icon *ngIf="darkmode" name="moon"></ion-icon>
-    <ion-icon *ngIf="!darkmode" name="sunny"></ion-icon>
-  </div>
+  <ion-buttons>
+    <ion-button (click)="changeTheme()">
+      <ion-icon *ngIf="darkmode" name="moon" size="medium"></ion-icon>
+      <ion-icon *ngIf="!darkmode" name="sunny" size="medium"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-app>

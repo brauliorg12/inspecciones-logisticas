@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import {
   Camera,
+  CameraDirection,
   CameraResultType,
   CameraSource,
   Photo,
@@ -92,7 +93,7 @@ export class MotoFormlyComponent implements OnInit {
   async selectImage() {
     const image = await Camera.getPhoto({
       quality: 90,
-      allowEditing: false,
+      allowEditing: true,
       resultType: CameraResultType.Uri,
       source: CameraSource.Photos, // Camera, Photos or Prompt!
     });
@@ -107,6 +108,7 @@ export class MotoFormlyComponent implements OnInit {
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
+      allowEditing: true,
       quality: 100,
     });
 
@@ -208,7 +210,7 @@ export class MotoFormlyComponent implements OnInit {
     this.images = [];
 
     const loading = await this.loadingCtrl.create({
-      message: 'Loading data...',
+      message: 'Cargando...',
     });
     await loading.present();
 

@@ -19,6 +19,13 @@
 .mat-form-field {
   font-size: 18px !important;
 }
+.mat-expansion-panel-header-description {
+  flex-grow: 0 !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
 
 .mat-button,
 .mat-flat-button,

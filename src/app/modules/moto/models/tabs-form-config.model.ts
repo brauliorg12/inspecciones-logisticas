@@ -53,7 +53,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
           // type: 'radio',
           className: 'col-12',
           expressionProperties: {
-            template: () => `<h3><strong>MOVIL R.O./O.I.:</strong> Moto </h3>`,
+            template: () => `<h3>MOVIL R.O./O.I.: <strong>Moto</strong></h3>`,
           },
           // templateOptions: {
           //   label: 'MOVIL R.O./O.I.',
