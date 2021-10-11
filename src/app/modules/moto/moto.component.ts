@@ -1,8 +1,4 @@
 import { tabsFormConfig } from './models/tabs-form-config.model';
-import { NestedFormConfig } from './models/nested-form-config.model';
-import { dropdownInputConfigFormData } from './models/dropdown-input-config.model';
-import { AgGridFormlyConfig } from './models/ag-grid-config.model';
-import { RepeatingSectionConfig } from './models/repeating-section-config.model';
 import { Component, OnInit } from '@angular/core';
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
@@ -31,10 +27,6 @@ interface LocalFile {
   styleUrls: ['./moto.component.scss'],
 })
 export class MotoFormlyComponent implements OnInit {
-  formRepeatSection: IAgFormlyConfig = new RepeatingSectionConfig();
-  formAgFormlyGrid: IAgFormlyConfig = new AgGridFormlyConfig();
-  formDropdownInput: IAgFormlyConfig = dropdownInputConfigFormData;
-  nestedForm: IAgFormlyConfig = new NestedFormConfig();
   tabsForms: IAgFormlyConfig = tabsFormConfig;
 
   images: LocalFile[] = [];
