@@ -1,0 +1,11 @@
+ionic capacitor build android --prod 
+
+npx cap sync
+
+
+
+para http
+
+
+app/src/main/Androidmanifest.xml
+android:usesCleartextTraffic="true"
