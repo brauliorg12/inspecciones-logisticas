@@ -1,20 +1,20 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Auto / Camioneta &nbsp;
-      <ion-icon name="car"></ion-icon>
+      Moto &nbsp;
+      <ion-icon name="bicycle"></ion-icon>
     </ion-title>
 
     <ion-buttons slot="end">
       <ion-button
-        *ngIf="images.length == 0"
+        *ngIf="!image"
         color="primary"
         (click)="addNewToGallery()"
       >
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
 
-      <ion-button color="success" *ngIf="images.length > 0">
+      <ion-button color="success" *ngIf="image">
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
 
@@ -23,21 +23,48 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content overflow-scroll="true" color="light">
+  <br />
   <div class="container">
     <br />
-    <mat-expansion-panel>
+    <mat-expansion-panel [disabled]="!image">
       <mat-expansion-panel-header>
-        <mat-panel-title
-          ><ion-text *ngIf="images.length == 0" color="danger"
-            >Falta imágen *</ion-text
-          >
-          <ion-text *ngIf="images.length > 0" color="success"
-            >Imágen cargada</ion-text
-          >
+        <mat-panel-title class="align-items-center">
+          <ion-text *ngIf="!image" color="danger">
+            Falta imágen *
+          </ion-text>
+          <ion-text *ngIf="image" color="success">
+            Imágen cargada
+          </ion-text>
         </mat-panel-title>
+        <mat-panel-description>
+          <ion-buttons slot="end">
+            <ion-button
+              *ngIf="!image"
+              color="primary"
+              (click)="addNewToGallery()"
+            >
+              <ion-icon slot="icon-only" name="camera"></ion-icon>
+            </ion-button>
+
+            <ion-button
+              *ngIf="!image"
+              (click)="selectImage()"
+              color="primary"
+            >
+              <ion-icon slot="icon-only" name="images"></ion-icon>
+            </ion-button>
+
+            <!-- <ion-button color="success" *ngIf="image">
+              <ion-icon slot="icon-only" name="camera"></ion-icon>
+            </ion-button>
+            <ion-button color="success" *ngIf="image">
+              <ion-icon slot="icon-only" name="images"></ion-icon>
+            </ion-button> -->
+          </ion-buttons>
+        </mat-panel-description>
 
         <!-- <mat-panel-description>
           Inform the date you wish to travel
@@ -45,31 +72,28 @@
         </mat-panel-description> -->
       </mat-expansion-panel-header>
 
-      <ion-card>
-        <ion-item
-          *ngFor="let file of images; let i = index"
-          color="light"
-          lines="none"
-        >
-          <ion-thumbnail slot="start">
-            <ion-img [src]="file.data"></ion-img>
-          </ion-thumbnail>
-          <ion-label class="ion-text-wrap">
-            {{ file.name }}
-          </ion-label>
-          <ion-buttons slot="end">
-            <ion-button fill="clear" (click)="startUpload(file)">
-              <ion-icon
-                slot="icon-only"
-                name="cloud-upload"
-                color="danger"
-              ></ion-icon>
-            </ion-button>
-            <ion-button fill="clear" (click)="deleteImage(file)">
-              <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-item>
+      <ion-card class="m-0" *ngIf="image">
+          <ion-img [src]="image.data"></ion-img>
+          <ion-toolbar class="ion-text-wrap">
+            <!-- {{ file.name }} -->
+
+            <ion-buttons slot="end">
+              <!-- <ion-button fill="clear" (click)="startUpload(file)">
+                <ion-icon
+                  slot="icon-only"
+                  name="cloud-upload"
+                  color="danger"
+                ></ion-icon>
+              </ion-button> -->
+              <ion-button fill="clear" (click)="deleteImage(image)">
+                <ion-icon
+                  slot="icon-only"
+                  name="trash"
+                  color="danger"
+                ></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
       </ion-card>
     </mat-expansion-panel>
   </div>

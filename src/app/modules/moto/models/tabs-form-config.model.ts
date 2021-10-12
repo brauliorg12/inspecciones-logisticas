@@ -49,27 +49,65 @@ export const tabsFormConfig: IAgFormlyConfig = {
       fieldGroup: [
         // Simple texto y requerido
         {
-          // key: 'movilRoId',
-          // type: 'radio',
-          className: 'col-12',
-          expressionProperties: {
-            template: () => `<h3>MOVIL R.O./O.I.: <strong>Moto</strong></h3>`,
+          key: 'nroMovil',
+          className: 'col-6',
+          type: 'input',
+          templateOptions: {
+            label: 'MOVIL R.O./O.I.:',
           },
-          // templateOptions: {
-          //   label: 'MOVIL R.O./O.I.',
-          //   required: false,
-          //   options: [
-          //     {
-          //       value: 1,
-          //       label: 'Auto/Camioneta',
-          //     },
-          //     {
-          //       value: 2,
-          //       label: 'Moto',
-          //     },
-          //   ],
-          // },
         },
+        {
+          key: 'ministerioId',
+          type: 'dropdown-input',
+          className: 'col-6 mt-1',
+          templateOptions: {
+            label: 'TIPO',
+            required: true,
+            options: [
+              {
+                value: 1,
+                label: '  MINISTERIO',
+              },
+              {
+                value: 2,
+                label: 'COMODATO',
+              },
+              {
+                value: 3,
+                label: 'FORTALECIMIENTO',
+              },
+            ],
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'value',
+              bindLabelOp: 'label',
+            },
+          },
+        },
+        // {
+        //   // key: 'movilRoId',
+        //   // type: 'radio',
+        //   className: 'col-12',
+        //   expressionProperties: {
+        //     template: () => `<h3>MOVIL R.O./O.I.: <strong>Moto</strong></h3>`,
+        //   },
+        //   // templateOptions: {
+        //   //   label: 'MOVIL R.O./O.I.',
+        //   //   required: false,
+        //   //   options: [
+        //   //     {
+        //   //       value: 1,
+        //   //       label: 'Auto/Camioneta',
+        //   //     },
+        //   //     {
+        //   //       value: 2,
+        //   //       label: 'Moto',
+        //   //     },
+        //   //   ],
+        //   // },
+        // },
         // {
         //   key: 'movilRoId',
         //   type: 'dropdown-input',
@@ -195,37 +233,6 @@ export const tabsFormConfig: IAgFormlyConfig = {
               {
                 value: 3,
                 label: 'Irrecuperable',
-              },
-            ],
-            attributes: {
-              searchable: 'true',
-              multiple: 'true',
-              appendTo: 'body',
-              bindValueOp: 'value',
-              bindLabelOp: 'label',
-            },
-          },
-        },
-
-        {
-          key: 'ministerioId',
-          type: 'dropdown-input',
-          className: 'col-6 mt-1',
-          templateOptions: {
-            label: 'TIPO',
-            required: true,
-            options: [
-              {
-                value: 1,
-                label: '  MINISTERIO',
-              },
-              {
-                value: 2,
-                label: 'COMODATO',
-              },
-              {
-                value: 3,
-                label: 'FORTALECIMIENTO',
               },
             ],
             attributes: {

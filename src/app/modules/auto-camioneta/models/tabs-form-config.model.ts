@@ -1,8 +1,8 @@
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
-import { mockAutoCamionetaTableModelParteExternaBase } from '@models/auto-camioneta-table-model';
 import { departamentosList } from '../../../models/departamentos-model';
+import { mockAutoCamionetaTableModelParteExternaBase } from '../../../models/auto-camioneta-table-model';
 
 const setDefault = () => {
   // Funcion para limpiar por defecto la tabla
@@ -35,6 +35,11 @@ export const tabsFormConfig: IAgFormlyConfig = {
     resetModelWhenSubmit: true,
 
     dataOptionsDropdown: {
+      // departamentos: {
+      //   url: 'https://infra.datos.gob.ar/catalog/modernizacion/dataset/7/distribution/7.3/download/departamentos.json',
+      //   // url: '../../../../assets/departamentos.json',
+      //   options: []
+      // },
       // Data para dropdown
     },
   },
@@ -44,28 +49,65 @@ export const tabsFormConfig: IAgFormlyConfig = {
       fieldGroup: [
         // Simple texto y requerido
         {
-          // key: 'movilRoId',
-          // type: 'radio',
-          className: 'col-12',
-          expressionProperties: {
-            template: () =>
-              `<h3><strong>MOVIL R.O./O.I.:</strong> Auto / Camioneta </h3>`,
+          key: 'nroMovil',
+          className: 'col-6',
+          type: 'input',
+          templateOptions: {
+            label: 'MOVIL R.O./O.I.:',
           },
-          // templateOptions: {
-          //   label: 'MOVIL R.O./O.I.',
-          //   required: false,
-          //   options: [
-          //     {
-          //       value: 1,
-          //       label: 'Auto/Camioneta',
-          //     },
-          //     {
-          //       value: 2,
-          //       label: 'Moto',
-          //     },
-          //   ],
-          // },
         },
+        {
+          key: 'ministerioId',
+          type: 'dropdown-input',
+          className: 'col-6 mt-1',
+          templateOptions: {
+            label: 'TIPO',
+            required: true,
+            options: [
+              {
+                value: 1,
+                label: '  MINISTERIO',
+              },
+              {
+                value: 2,
+                label: 'COMODATO',
+              },
+              {
+                value: 3,
+                label: 'FORTALECIMIENTO',
+              },
+            ],
+            attributes: {
+              searchable: 'true',
+              multiple: 'true',
+              appendTo: 'body',
+              bindValueOp: 'value',
+              bindLabelOp: 'label',
+            },
+          },
+        },
+        // {
+        //   // key: 'movilRoId',
+        //   // type: 'radio',
+        //   className: 'col-12',
+        //   expressionProperties: {
+        //     template: () => `<h3>MOVIL R.O./O.I.: <strong>Moto</strong></h3>`,
+        //   },
+        //   // templateOptions: {
+        //   //   label: 'MOVIL R.O./O.I.',
+        //   //   required: false,
+        //   //   options: [
+        //   //     {
+        //   //       value: 1,
+        //   //       label: 'Auto/Camioneta',
+        //   //     },
+        //   //     {
+        //   //       value: 2,
+        //   //       label: 'Moto',
+        //   //     },
+        //   //   ],
+        //   // },
+        // },
         // {
         //   key: 'movilRoId',
         //   type: 'dropdown-input',
@@ -121,6 +163,10 @@ export const tabsFormConfig: IAgFormlyConfig = {
           key: 'partidoId',
           type: 'dropdown-input',
           className: 'col-6 mt-1',
+          // expressionProperties: {
+          //   'templateOptions.options':
+          //     '../../../../assets/departamentos.json',
+          // },
           templateOptions: {
             label: 'PARTIDOS',
             searchable: true,
@@ -171,7 +217,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
         {
           key: 'estadoGeneralId',
           type: 'dropdown-input',
-          className: 'col-6',
+          className: 'col-6 mt-1',
           templateOptions: {
             label: 'ESTADO',
             required: true,
@@ -187,37 +233,6 @@ export const tabsFormConfig: IAgFormlyConfig = {
               {
                 value: 3,
                 label: 'Irrecuperable',
-              },
-            ],
-            attributes: {
-              searchable: 'true',
-              multiple: 'true',
-              appendTo: 'body',
-              bindValueOp: 'value',
-              bindLabelOp: 'label',
-            },
-          },
-        },
-
-        {
-          key: 'ministerioId',
-          type: 'dropdown-input',
-          className: 'col-6',
-          templateOptions: {
-            label: 'TIPO',
-            required: true,
-            options: [
-              {
-                value: 1,
-                label: '  MINISTERIO',
-              },
-              {
-                value: 2,
-                label: 'COMODATO',
-              },
-              {
-                value: 3,
-                label: 'FORTALECIMIENTO',
               },
             ],
             attributes: {
@@ -255,7 +270,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
 
         {
           key: 'dependencia',
-          className: 'col-12',
+          className: 'col-12 mt-1',
           type: 'textarea',
           templateOptions: {
             label: 'DEPENDENCIA',
@@ -393,7 +408,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
                         debounceMs: 400,
                       },
                       autoHeight: true,
-                      minWidth: 205,
+                      minWidth: 220,
                       maxWidth: 300,
                     },
                     {

@@ -26,9 +26,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
   // },
   submit: (model) => model,
   model: {
-    resultados: {
-      datosTabla: setDefault(),
-    },
+    datosTabla: {},
   },
   formState: {
     resetModelWhenSubmit: true,
@@ -43,7 +41,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
       fieldGroup: [
         // Tabla
         {
-          key: 'resultados',
+          // key: 'resultados',
           // wrappers: ['nested-form'],
           // templateOptions: {
           //   // label: 'Resultados Formulario',
@@ -71,7 +69,7 @@ export const tabsFormConfig: IAgFormlyConfig = {
                   columnDefs: [
                     {
                       headerName: 'PARTIDOS',
-                      field: 'partidos',
+                      field: 'partidoId',
                       flex: 1,
                       resizable: true,
                       autoHeight: true,

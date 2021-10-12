@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  basepath: ''
+  basepath: 'https://vps-1663776-x.dattaweb.com',
 };
 
 /*

@@ -7,14 +7,14 @@
 
     <ion-buttons slot="end">
       <ion-button
-        *ngIf="images.length == 0"
+        *ngIf="!image"
         color="primary"
         (click)="addNewToGallery()"
       >
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
 
-      <ion-button color="success" *ngIf="images.length > 0">
+      <ion-button color="success" *ngIf="image">
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
 
@@ -29,20 +29,20 @@
   <br />
   <div class="container">
     <br />
-    <mat-expansion-panel [disabled]="images.length == 0">
+    <mat-expansion-panel [disabled]="!image">
       <mat-expansion-panel-header>
         <mat-panel-title class="align-items-center">
-          <ion-text *ngIf="images.length == 0" color="danger">
+          <ion-text *ngIf="!image" color="danger">
             Falta imágen *
           </ion-text>
-          <ion-text *ngIf="images.length > 0" color="success">
+          <ion-text *ngIf="image" color="success">
             Imágen cargada
           </ion-text>
         </mat-panel-title>
         <mat-panel-description>
           <ion-buttons slot="end">
             <ion-button
-              *ngIf="images.length == 0"
+              *ngIf="!image"
               color="primary"
               (click)="addNewToGallery()"
             >
@@ -50,17 +50,17 @@
             </ion-button>
 
             <ion-button
-              *ngIf="images.length == 0"
+              *ngIf="!image"
               (click)="selectImage()"
               color="primary"
             >
-              <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+              <ion-icon slot="icon-only" name="images"></ion-icon>
             </ion-button>
 
-            <!-- <ion-button color="success" *ngIf="images.length > 0">
+            <!-- <ion-button color="success" *ngIf="image">
               <ion-icon slot="icon-only" name="camera"></ion-icon>
             </ion-button>
-            <ion-button color="success" *ngIf="images.length > 0">
+            <ion-button color="success" *ngIf="image">
               <ion-icon slot="icon-only" name="images"></ion-icon>
             </ion-button> -->
           </ion-buttons>
@@ -72,11 +72,9 @@
         </mat-panel-description> -->
       </mat-expansion-panel-header>
 
-      <ion-card class="m-0">
-        <ng-container *ngFor="let file of images; let i = index">
-          <ion-img [src]="file.data"></ion-img>
-
-          <ion-label class="ion-text-wrap">
+      <ion-card class="m-0" *ngIf="image">
+          <ion-img [src]="image.data"></ion-img>
+          <ion-toolbar class="ion-text-wrap">
             <!-- {{ file.name }} -->
 
             <ion-buttons slot="end">
@@ -87,7 +85,7 @@
                   color="danger"
                 ></ion-icon>
               </ion-button> -->
-              <ion-button fill="clear" (click)="deleteImage(file)">
+              <ion-button fill="clear" (click)="deleteImage(image)">
                 <ion-icon
                   slot="icon-only"
                   name="trash"
@@ -95,8 +93,7 @@
                 ></ion-icon>
               </ion-button>
             </ion-buttons>
-          </ion-label>
-        </ng-container>
+          </ion-toolbar>
       </ion-card>
     </mat-expansion-panel>
   </div>

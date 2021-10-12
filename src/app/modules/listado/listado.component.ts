@@ -11,6 +11,7 @@ import {
   Photo,
 } from '@capacitor/camera';
 import { finalize } from 'rxjs/operators';
+import { DatabaseService } from '../../services/database/database.service';
 
 const IMAGE_DIR = 'stored-images';
 
@@ -31,6 +32,7 @@ export class ListadoComponent implements OnInit {
   images: LocalFile[] = [];
 
   constructor(
+    private dataBaseService: DatabaseService,
     private plt: Platform,
     private http: HttpClient,
     private loadingCtrl: LoadingController,
@@ -39,6 +41,13 @@ export class ListadoComponent implements OnInit {
 
   async ngOnInit() {
     // this.loadFiles();
+    this.dataBaseService.getFormsMotos().subscribe((resp) => {
+      if (resp.ok && this.tabsForms) {
+        console.log(resp);
+        
+        this.tabsForms.model.datosTabla = resp.formularios;
+      }
+    });
   }
 
   submitFn(): void {

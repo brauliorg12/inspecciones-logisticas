@@ -12,6 +12,7 @@ import {
   Photo,
 } from '@capacitor/camera';
 import { finalize } from 'rxjs/operators';
+import { DatabaseService } from '../../services/database/database.service';
 
 const IMAGE_DIR = 'stored-images';
 
@@ -29,13 +30,15 @@ interface LocalFile {
 export class MotoFormlyComponent implements OnInit {
   tabsForms: IAgFormlyConfig = tabsFormConfig;
 
-  images: LocalFile[] = [];
+  image: LocalFile;
+  file: File;
 
   constructor(
     private plt: Platform,
     private http: HttpClient,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private databaseService: DatabaseService
   ) {}
 
   async ngOnInit() {
@@ -49,6 +52,7 @@ export class MotoFormlyComponent implements OnInit {
       this.presentToast('Falta completar!');
     } else {
       console.log('Submit TabsForm >> ', this.tabsForms.fields[0]);
+      this.createFormMoto();
     }
   }
 
@@ -63,11 +67,11 @@ export class MotoFormlyComponent implements OnInit {
         directory: Directory.Data,
       });
 
-      this.images.push({
+      this.image = {
         name: f,
         path: filePath,
         data: `data:image/jpeg;base64,${readFile.data}`,
-      });
+      };
     }
   }
 
@@ -145,6 +149,9 @@ export class MotoFormlyComponent implements OnInit {
   // Helper function
   convertBlobToBase64 = (blob: Blob) =>
     new Promise((resolve, reject) => {
+      this.file = new File([blob], 'imagen');
+      console.log(this.file);
+
       const reader = new FileReader();
       reader.onerror = reject;
       reader.onload = () => {
@@ -195,11 +202,11 @@ export class MotoFormlyComponent implements OnInit {
       path: file.path,
     });
     this.loadFiles();
-    this.presentToast('File removed.');
+    this.presentToast('Imágen eliminada');
   }
 
   async loadFiles() {
-    this.images = [];
+    this.image = null;
 
     const loading = await this.loadingCtrl.create({
       message: 'Cargando...',
@@ -225,5 +232,40 @@ export class MotoFormlyComponent implements OnInit {
       .then((_) => {
         loading.dismiss();
       });
+  }
+
+  // ! NEW Moto
+  createFormMoto() {
+    // this.presentLoading('Creando Comercio...');
+
+    this.databaseService
+      .createMoto(this.tabsForms.fields[0].parent.model, this.file)
+      .then((res: any) => {
+        console.log(res);
+        if (res.ok) {
+          this.deleteImage(this.image);
+          this.image = null;
+          this.presentToast('Archivo Guardado!');
+        }
+        // if (res) {
+        //   this.loading.dismiss();
+        //   this.refreshEvent.Page();
+
+        //   if (this.moderator === 'moderador' || this.moderator === 'admin' || this.moderator === 'codi') {
+        //     this.router.navigateByUrl('/admin-commerces');
+
+        //   }
+
+        //   if (this.moderator === 'user') {
+        //     this.router.navigateByUrl('/main/tabs/menu');
+
+        //     this.uiService.paginaCreada('Comercio');
+        //   }
+
+        //   this.photoSelected = '';
+        //   this.ResetForm();
+        // }
+      });
+    return false;
   }
 }
