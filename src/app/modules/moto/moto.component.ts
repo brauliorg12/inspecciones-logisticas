@@ -48,7 +48,7 @@ export class MotoFormlyComponent implements OnInit {
   submitFn(): void {
     this.tabsForms.fields[0].form.markAllAsTouched();
 
-    if (!this.tabsForms.fields[0].form.valid) {
+    if (!this.tabsForms.fields[0].form.valid || !this.file) {
       this.presentToast('Falta completar!');
     } else {
       console.log('Submit TabsForm >> ', this.tabsForms.fields[0]);
@@ -66,6 +66,11 @@ export class MotoFormlyComponent implements OnInit {
         path: filePath,
         directory: Directory.Data,
       });
+
+      this.file = new File([readFile.data], 'imagen');
+      console.log(this.file);
+
+      console.log(f);
 
       this.image = {
         name: f,
@@ -105,7 +110,7 @@ export class MotoFormlyComponent implements OnInit {
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       allowEditing: true,
-      quality: 100,
+      quality: 90,
     });
 
     if (capturedPhoto) {
@@ -237,7 +242,6 @@ export class MotoFormlyComponent implements OnInit {
   // ! NEW Moto
   createFormMoto() {
     // this.presentLoading('Creando Comercio...');
-
     this.databaseService
       .createMoto(this.tabsForms.fields[0].parent.model, this.file)
       .then((res: any) => {
@@ -245,7 +249,9 @@ export class MotoFormlyComponent implements OnInit {
         if (res.ok) {
           this.deleteImage(this.image);
           this.image = null;
+          this.file = null;
           this.presentToast('Archivo Guardado!');
+          this.tabsForms.options.resetModel();
         }
         // if (res) {
         //   this.loading.dismiss();
@@ -266,6 +272,7 @@ export class MotoFormlyComponent implements OnInit {
         //   this.ResetForm();
         // }
       });
+
     return false;
   }
 }

@@ -2,7 +2,7 @@ import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-c
 import { mockMotosTableModelParteExternaBase } from '@models/motos-table-model';
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
-import { departamentosList } from '../../../models/departamentos-model';
+import { departamentosList } from '@models/departamentos-model';
 
 const setDefault = () => {
   // Funcion para limpiar por defecto la tabla

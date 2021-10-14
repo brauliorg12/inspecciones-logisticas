@@ -1,7 +1,8 @@
 import { IAgFormlyConfig } from '@shared/components/ag-formly/models/ag-formly-config.model';
+import { mockMotosTableModelParteExternaBase } from '@models/motos-table-model';
 import { DropdownCellRendererComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-renderer.component';
 import { DropdownCellEditorComponent } from '@shared/components/ag-table/custom-cell/dropdown-cell-editor/dropdown-cell-editor.component';
-import { departamentosList } from '../../../models/departamentos-model';
+import { departamentosList } from '@models/departamentos-model';
 import { mockAutoCamionetaTableModelParteExternaBase } from '../../../models/auto-camioneta-table-model';
 
 const setDefault = () => {
